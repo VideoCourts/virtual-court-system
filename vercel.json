@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api.py", "use": "@vercel/python" },
+    { "src": "frontend/backend/server.js", "use": "@vercel/node" },
+    { "src": "index.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "api.py" },
+    { "src": "/backend/(.*)", "dest": "frontend/backend/server.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "env": {
+    "PYTHON_VERSION": "3.11",
+    "NODE_VERSION": "20.x"
+  }
+}
