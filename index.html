@@ -1,177 +1,1128 @@
+index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VideoCourts™ — Secure Virtual Courtrooms</title>
-  <style>
-    :root{--primary:#00d4ff;--secondary:#764ba2;--bg:#0a1628;--card:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--success:#10b981;--warning:#f59e0b}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,var(--bg) 0%,#1e293b 100%);color:var(--text);min-height:100vh;line-height:1.6}
-    .container{max-width:800px;margin:0 auto;padding:40px 20px}
-    .header{text-align:center;padding:40px 30px;background:rgba(255,255,255,0.05);border-radius:20px;margin-bottom:30px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}
-    .logo{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:20px}
-    .logo-icon{width:60px;height:60px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2em}
-    .logo-text{font-size:2.5em;font-weight:700;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .tagline{font-size:1.3em;color:var(--muted);margin-bottom:20px}
-    .features-list{color:var(--text);margin:20px 0;font-size:1.1em}
-    .nav-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:30px 0}
-    .nav-link{padding:15px;text-align:center;background:rgba(0,212,255,0.1);color:var(--primary);text-decoration:none;border-radius:8px;font-weight:600;transition:all 0.3s;border:1px solid rgba(0,212,255,0.2)}
-    .nav-link:hover{background:rgba(0,212,255,0.2);transform:translateY(-2px)}
-    .btn{display:inline-block;padding:16px 40px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:1.1em;margin:10px 5px;transition:all 0.3s;border:none;cursor:pointer}
-    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,212,255,0.4)}
-    .btn-secondary{background:linear-gradient(135deg,var(--secondary),#667eea)}
-    .notice{background:#fef3c7;border:2px solid var(--warning);color:#92400e;padding:20px;border-radius:12px;margin:25px 0}
-    .notice strong{color:#b45309}
-    .demo-mode{background:#7c2d12;border:2px solid #ea580c;color:#fdba74;padding:15px;border-radius:8px;margin:20px 0;text-align:center}
-    .feature-card{background:var(--card);padding:25px;border-radius:12px;margin:20px 0;border-left:4px solid var(--primary)}
-    .feature-card h3{color:var(--primary);margin-bottom:10px}
-    footer{text-align:center;padding:30px;color:var(--muted);margin-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
-    @media(max-width:600px){.nav-grid{grid-template-columns:1fr}.logo-text{font-size:1.8em}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0a0e1a">
+<title>VideoCourts™ | Enterprise Justice Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:#0a0e1a;color:#e2e8f0;min-height:100dvh;padding-bottom:90px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+input,textarea,select{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+.grad-bg{background:linear-gradient(135deg,#3b82f6,#06b6d4)}
+.grad-purple{background:linear-gradient(135deg,#8b5cf6,#ec4899)}
+.grad-emerald{background:linear-gradient(135deg,#10b981,#059669)}
+.grad-red{background:linear-gradient(135deg,#dc2626,#f97316)}
+.grad-amber{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.grad-idme{background:linear-gradient(135deg,#00a3e0,#0077c8)}
+.grad-legalshield{background:linear-gradient(135deg,#0056b3,#00a8e8)}
+.grad-naacp{background:linear-gradient(135deg,#d32f2f,#000)}
+.grad-cyan{background:linear-gradient(135deg,#06b6d4,#3b82f6)}
+.grad-rose{background:linear-gradient(135deg,#f43f5e,#ec4899)}
+.grad-teal{background:linear-gradient(135deg,#14b8a6,#0d9488)}
+.grad-indigo{background:linear-gradient(135deg,#6366f1,#4f46e5)}
+.grad-gold{background:linear-gradient(135deg,#fbbf24,#d97706)}
+.grad-text{background:linear-gradient(135deg,#3b82f6,#06b6d4);-webkit-background-clip:text;color:transparent}
+.btn{width:100%;padding:14px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;transition:transform .1s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:linear-gradient(135deg,#3b82f6,#06b6d4);color:#fff}
+.btn-success{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+.btn-purple{background:linear-gradient(135deg,#8b5cf6,#ec4899);color:#fff}
+.btn-danger{background:linear-gradient(135deg,#dc2626,#f97316);color:#fff}
+.btn-amber{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff}
+.btn-secondary{background:#1e293b;color:#e2e8f0;border:1px solid #334155}
+.btn-idme{background:linear-gradient(135deg,#00a3e0,#0077c8);color:#fff}
+.btn-legalshield{background:linear-gradient(135deg,#0056b3,#00a8e8);color:#fff}
+.btn-naacp{background:linear-gradient(135deg,#d32f2f,#000);color:#fff}
+.btn-cyan{background:linear-gradient(135deg,#06b6d4,#3b82f6);color:#fff}
+.btn-rose{background:linear-gradient(135deg,#f43f5e,#ec4899);color:#fff}
+.btn-teal{background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff}
+.btn-indigo{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff}
+.btn-gold{background:linear-gradient(135deg,#fbbf24,#d97706);color:#fff}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-row .btn{margin-bottom:0}
+.input{width:100%;background:#0f172a;border:1px solid #1e293b;color:#e2e8f0;padding:14px;border-radius:12px;font-size:15px;margin-bottom:12px}
+.input:focus{outline:none;border-color:#3b82f6}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.view{display:none;animation:fadeIn .3s ease;padding:16px}
+.view.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;margin-bottom:14px}
+.card-glow{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(6,182,212,.08));border:1px solid rgba(59,130,246,.25)}
+.flash-banner{background:linear-gradient(90deg,#f59e0b,#ef4444,#f59e0b);background-size:200% 100%;animation:flashGrad 2.5s infinite;color:#fff;font-weight:800;text-align:center;padding:16px;cursor:pointer;border-radius:14px;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;font-size:14px;box-shadow:0 6px 20px rgba(239,68,68,.4)}
+@keyframes flashGrad{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(10,14,26,.98);backdrop-filter:blur(12px);border-top:1px solid #1e293b;display:flex;justify-content:space-around;padding:10px 0 calc(10px + env(safe-area-inset-bottom,0));z-index:100}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#64748b;font-size:10px;cursor:pointer;padding:6px 0}
+.nav-item.active{color:#3b82f6}
+.nav-item i{font-size:20px}
+.slide-menu{position:fixed;top:0;right:-100%;width:85%;max-width:320px;height:100dvh;background:#111827;border-left:1px solid #1e293b;z-index:200;transition:right .3s ease;overflow-y:auto;padding:20px}
+.slide-menu.open{right:0}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:150;display:none}
+.menu-overlay.show{display:block}
+.menu-item{padding:14px 16px;border-radius:12px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .2s;font-size:14px;font-weight:500}
+.menu-item:hover,.menu-item:active{background:#1e293b}
+.menu-item i{width:24px;text-align:center;color:#3b82f6}
+.floating-ai{position:fixed;bottom:100px;right:16px;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;box-shadow:0 8px 24px rgba(139,92,246,.5);cursor:pointer;z-index:90}
+.floating-ai:active{transform:scale(.9)}
+.chat-panel{position:fixed;bottom:170px;right:16px;left:16px;background:#111827;border:1px solid #1e293b;border-radius:16px;display:none;flex-direction:column;z-index:150;max-height:70vh}
+.chat-panel.open{display:flex}
+.chat-bubble{margin-bottom:10px;padding:10px 14px;border-radius:12px;max-width:85%;font-size:13px;word-wrap:break-word}
+.chat-bubble.user{background:linear-gradient(135deg,#3b82f6,#06b6d4);color:#fff;margin-left:auto}
+.chat-bubble.bot{background:#1e293b}
+.ai-disclaimer{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);border-radius:8px;padding:10px;font-size:12px;color:#fca5a5;margin-bottom:12px;display:flex;gap:8px;align-items:flex-start}
+.mic-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;transition:all .2s;flex-shrink:0;box-shadow:0 4px 16px rgba(239,68,68,.4);animation:micPulse 2s infinite}
+.mic-btn.listening{background:linear-gradient(135deg,#dc2626,#7f1d1d);animation:micListening 1s infinite}
+@keyframes micPulse{0%,100%{box-shadow:0 4px 16px rgba(239,68,68,.4),0 0 0 0 rgba(239,68,68,.5)}50%{box-shadow:0 4px 16px rgba(239,68,68,.4),0 0 0 12px rgba(239,68,68,0)}}
+@keyframes micListening{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.7)}50%{box-shadow:0 0 0 16px rgba(239,68,68,0)}}
+.mic-helper{text-align:center;font-size:11px;color:#94a3b8;margin-top:8px;font-weight:600}
+.mic-helper i{color:#ef4444;margin-right:4px}
+.speaker-btn{width:36px;height:36px;border-radius:50%;background:#334155;color:#e2e8f0;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
+.speaker-btn.active{background:#3b82f6;color:#fff}
+.toast{position:fixed;top:20px;left:16px;right:16px;background:#10b981;color:#fff;padding:16px;border-radius:12px;font-weight:700;z-index:3000;display:none;text-align:center}
+.toast.show{display:block;animation:slideDown .3s}
+@keyframes slideDown{from{transform:translateY(-20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.module-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.module-card:active{transform:scale(.97);border-color:#3b82f6}
+.module-card .module-card-thumb{width:100%;height:80px;border-radius:10px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:36px;color:#fff}
+.module-card .font-semibold{font-size:14px}
+.module-card .module-card-tagline{font-size:11px;color:#64748b;margin-top:6px;line-height:1.3}
+.module-card .module-arrow{position:absolute;top:12px;right:12px;color:#3b82f6;font-size:18px;animation:arrowPulse 1.5s infinite}
+@keyframes arrowPulse{0%,100%{transform:translateX(0);opacity:1}50%{transform:translateX(4px);opacity:.6}}
+.section-title{font-size:18px;font-weight:800;margin:20px 0 12px;display:flex;align-items:center;gap:8px}
+.section-title i{color:#3b82f6}
+.info-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;margin-bottom:14px}
+.info-card h3{font-size:16px;font-weight:700;margin-bottom:8px;color:#f1f5f9}
+.info-card p,.info-card li{font-size:13px;color:#94a3b8;line-height:1.5;margin-bottom:10px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:#1e293b;border:1px solid #334155;color:#e2e8f0;padding:10px 16px;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;margin-bottom:16px;transition:all .2s}
+.back-btn:active{transform:scale(.97);background:#334155}
+.module-header-banner{position:relative;border-radius:16px;overflow:hidden;margin-bottom:16px;min-height:140px;display:flex;align-items:flex-end;padding:20px}
+.module-header-banner .banner-bg{position:absolute;inset:0;z-index:0}
+.module-header-banner .banner-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);z-index:1}
+.module-header-banner .banner-content{position:relative;z-index:2;color:#fff;width:100%}
+.module-header-banner .banner-icon{position:absolute;top:16px;right:16px;width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:28px;z-index:2;border:1px solid rgba(255,255,255,0.2)}
+.module-header-banner h2{font-size:22px;font-weight:800;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.module-header-banner p{font-size:13px;opacity:0.95;line-height:1.4;text-shadow:0 1px 4px rgba(0,0,0,0.5)}
+.close-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .2s}
+.close-x:hover{background:rgba(239,68,68,0.8);transform:scale(1.1)}
+.hero-section{position:relative;border-radius:24px;overflow:hidden;margin-bottom:24px;min-height:400px;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%)}
+.hero-section .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,14,26,0.85) 0%,rgba(37,99,235,0.6) 100%);z-index:1}
+.hero-section .hero-content{position:relative;z-index:2;color:#fff;max-width:700px}
+.hero-section h1{font-size:36px;font-weight:900;margin-bottom:16px;line-height:1.1;text-shadow:0 4px 20px rgba(0,0,0,0.5)}
+.hero-section p{font-size:16px;line-height:1.6;margin-bottom:24px;color:#e2e8f0;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.hero-section .hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.hero-badge{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:999px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.hero-badge i{color:#10b981}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-cta .btn{width:auto;margin-bottom:0;padding:14px 28px}
+@media (max-width:640px){.hero-section h1{font-size:28px}.hero-section p{font-size:14px}.hero-section{min-height:340px;padding:30px 16px}}
+.cookie-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);max-width:420px;width:calc(100% - 32px);background:#1e293b;border:1px solid #334155;border-radius:14px;padding:14px 18px;z-index:4000;display:none;box-shadow:0 12px 40px rgba(0,0,0,0.6);animation:cookieSlideIn .4s ease}
+.cookie-toast.show{display:block}
+@keyframes cookieSlideIn{from{opacity:0;transform:translateX(-50%) translateY(-20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.cookie-toast-inner{display:flex;align-items:flex-start;gap:12px}
+.cookie-toast-icon{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;color:#3b82f6;font-size:16px}
+.cookie-toast-text{flex:1;font-size:12px;color:#94a3b8;line-height:1.5}
+.cookie-toast-text a{color:#3b82f6;text-decoration:underline}
+.cookie-toast-close{flex-shrink:0;width:28px;height:28px;border-radius:6px;background:#334155;border:none;color:#94a3b8;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.cookie-toast-close:hover{background:#ef4444;color:#fff}
+.cookie-toast-actions{display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid #334155}
+.cookie-toast-btn{flex:1;padding:8px;border-radius:8px;font-size:12px;font-weight:600;border:none;cursor:pointer;transition:all .2s}
+.cookie-toast-btn.primary{background:#3b82f6;color:#fff}
+.cookie-toast-btn.secondary{background:#334155;color:#94a3b8}
+.login-modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;display:none;align-items:center;justify-content:center;padding:20px}
+.login-modal.show{display:flex}
+.login-content{background:#111827;border:1px solid #3b82f6;border-radius:20px;padding:32px;width:100%;max-width:420px;animation:popIn .3s ease}
+@keyframes popIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.external-modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:500;display:none;flex-direction:column;padding:16px}
+.external-modal.show{display:flex}
+.external-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:#fff}
+.external-modal-close{background:#334155;border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer}
+.external-iframe{flex:1;width:100%;border:none;border-radius:12px;background:#fff}
+.logo-container{display:flex;justify-content:center;margin-bottom:20px}
+.logo-container svg{width:180px;height:150px;filter:drop-shadow(0 8px 24px rgba(59,130,246,0.4))}
+.social-icon{width:40px;height:40px;border-radius:50%;background:#1e293b;border:1px solid #334155;display:flex;align-items:center;justify-content:center;color:#e2e8f0;font-size:18px;cursor:pointer;transition:all .2s;text-decoration:none}
+.social-icon:hover{background:#3b82f6;border-color:#3b82f6;transform:translateY(-2px)}
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="logo">
-        <div class="logo-icon">⚖️</div>
-        <div class="logo-text">VideoCourts™</div>
+<div id="toast" class="toast"><i class="fas fa-check-circle"></i> <span id="toast-msg"></span></div>
+<div class="menu-overlay" id="menu-overlay" onclick="toggleMenu()"></div>
+
+<div id="cookie-toast" class="cookie-toast">
+  <div class="cookie-toast-inner">
+    <div class="cookie-toast-icon"><i class="fas fa-cookie-bite"></i></div>
+    <div class="cookie-toast-text">We use cookies to improve your experience. By continuing, you agree to our <a href="#" onclick="showView('view-privacy');closeCookie()">Privacy Policy</a>.</div>
+    <button class="cookie-toast-close" onclick="closeCookie()" title="Dismiss">×</button>
+  </div>
+  <div class="cookie-toast-actions">
+    <button class="cookie-toast-btn secondary" onclick="closeCookie()">Manage</button>
+    <button class="cookie-toast-btn primary" onclick="closeCookie()">OK</button>
+  </div>
+</div>
+
+<div id="external-modal" class="external-modal">
+  <div class="external-modal-header">
+    <h3 id="modal-title">External Resource</h3>
+    <button class="external-modal-close" onclick="closeExternalModal()">×</button>
+  </div>
+  <iframe id="external-iframe" class="external-iframe" src=""></iframe>
+</div>
+
+<div id="login-modal" class="login-modal">
+  <div class="login-content">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-bold">Sign In to VideoCourts™</h3>
+      <button onclick="closeLogin()" class="text-2xl text-slate-400">×</button>
+    </div>
+    <div id="login-step-1">
+      <label class="text-xs text-slate-400 font-bold uppercase mb-2 block">Email Address</label>
+      <input type="email" class="input" placeholder="you@example.com" id="login-email">
+      <label class="text-xs text-slate-400 font-bold uppercase mb-2 block">6-Digit PIN Code</label>
+      <input type="password" class="input text-center text-2xl tracking-widest font-mono" placeholder="••••••" maxlength="6" id="login-pin" style="letter-spacing:8px">
+      <button onclick="verifyLogin()" class="btn btn-primary mt-4"><i class="fas fa-lock"></i> Sign In</button>
+      <p class="text-xs text-slate-400 text-center mt-4">New to VideoCourts? <a href="#" onclick="showView('view-idme');closeLogin()" class="text-blue-400">Create Account</a></p>
+    </div>
+  </div>
+</div>
+
+<nav class="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800 px-4 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-3 cursor-pointer" onclick="showView('view-home')">
+    <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:42px">
+      <path d="M 30 50 L 55 50 L 45 75 L 70 75 L 30 130 L 42 90 L 22 90 Z" fill="#3b82f6" stroke="#06b6d4" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M 170 50 L 145 50 L 155 75 L 130 75 L 170 130 L 158 90 L 178 90 Z" fill="#3b82f6" stroke="#06b6d4" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="60" y="55" width="80" height="50" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="2.5"/>
+      <circle cx="100" cy="80" r="22" fill="#0f172a" stroke="#3b82f6" stroke-width="2.5"/>
+      <circle cx="100" cy="80" r="15" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+      <circle cx="100" cy="80" r="8" fill="#0a0e1a" stroke="#3b82f6" stroke-width="1.5"/>
+      <circle cx="96" cy="76" r="2.5" fill="#60a5fa"/>
+      <rect x="85" y="50" width="30" height="7" rx="2" fill="#3b82f6"/>
+    </svg>
+    <div>
+      <h1 class="text-lg font-bold leading-tight">VideoCourts<span class="text-xs text-slate-400">™</span></h1>
+      <p class="text-[10px] text-slate-400 uppercase tracking-wider">Official Virtual Courtroom System</p>
+    </div>
+  </div>
+  <button onclick="openLogin()" class="btn-primary" style="width:auto;padding:10px 18px;margin:0;font-size:13px"><i class="fas fa-user-lock"></i> <span class="hidden sm:inline">Login</span></button>
+</nav>
+
+<div class="slide-menu" id="slide-menu">
+  <div class="flex justify-between items-center mb-6">
+    <h3 class="text-lg font-bold">VideoCourts™ Console</h3>
+    <button onclick="toggleMenu()" class="text-2xl text-slate-400">×</button>
+  </div>
+  <div class="menu-item" onclick="showView('view-home');toggleMenu()"><i class="fas fa-home"></i><span>Home</span></div>
+  <div class="menu-item" onclick="showView('view-virtual-request');toggleMenu()"><i class="fas fa-paper-plane"></i><span>Request Virtual Appearance</span></div>
+  <div class="menu-item" onclick="showView('view-courtroom');toggleMenu()"><i class="fas fa-video"></i><span>Live Courtroom</span></div>
+  <div class="menu-item" onclick="showView('view-efile');toggleMenu()"><i class="fas fa-file-upload"></i><span>Nationwide e-File</span></div>
+  <div class="menu-item" onclick="showView('view-bail');toggleMenu()"><i class="fas fa-hand-holding-dollar"></i><span>Virtual Bail Network</span></div>
+  <div class="menu-item" onclick="showView('view-inmate');toggleMenu()"><i class="fas fa-building-shield"></i><span>JailCourt (Inmate)</span></div>
+  <div class="menu-item" onclick="showView('view-ice');toggleMenu()"><i class="fas fa-passport"></i><span>ICE / Immigration</span></div>
+  <div class="menu-item" onclick="showView('view-arbitration');toggleMenu()"><i class="fas fa-scale-balanced"></i><span>National Arbitration</span></div>
+  <div class="menu-item" onclick="showView('view-mediation');toggleMenu()"><i class="fas fa-handshake"></i><span>Mediation & Visitation</span></div>
+  <div class="menu-item" onclick="showView('view-parole');toggleMenu()"><i class="fas fa-user-check"></i><span>Parole & Probation</span></div>
+  <div class="menu-item" onclick="showView('view-vault');toggleMenu()"><i class="fas fa-vault"></i><span>Evidence Vault</span></div>
+  <div class="menu-item" onclick="showView('view-forms');toggleMenu()"><i class="fas fa-file-pdf"></i><span>Court Forms (PDF)</span></div>
+  <div class="menu-item" onclick="showView('view-esign');toggleMenu()"><i class="fas fa-signature"></i><span>E-Signature</span></div>
+  <div class="menu-item" onclick="showView('view-notary');toggleMenu()"><i class="fas fa-stamp"></i><span>Remote Notary (RON)</span></div>
+  <div class="menu-item" onclick="showView('view-transcribe');toggleMenu()"><i class="fas fa-closed-captioning"></i><span>AI Transcribe</span></div>
+  <div class="menu-item" onclick="showView('view-mock');toggleMenu()"><i class="fas fa-scale-balanced"></i><span>Mock Trial Lab</span></div>
+  <div class="menu-item" onclick="showView('view-courtcall');toggleMenu()"><i class="fas fa-headset"></i><span>CourtCall</span></div>
+  <div class="menu-item" onclick="showView('view-legalshield');toggleMenu()"><i class="fas fa-shield-halved"></i><span>LegalShield</span></div>
+  <div class="menu-item" onclick="showView('view-reporting');toggleMenu()"><i class="fas fa-file-alt"></i><span>Court Reporting</span></div>
+  <div class="menu-item" onclick="showView('view-courtcam');toggleMenu()"><i class="fas fa-tv"></i><span>Court Cam TV</span></div>
+  <div class="menu-item" onclick="showView('view-lawyers');toggleMenu()"><i class="fas fa-users"></i><span>Lawyers Directory</span></div>
+  <div class="menu-item" onclick="showView('view-naacp');toggleMenu()"><i class="fas fa-hand-fist"></i><span>Civil Rights / NAACP</span></div>
+  <div class="menu-item" onclick="showView('view-idme');toggleMenu()"><i class="fas fa-fingerprint"></i><span>ID.me Biometrics</span></div>
+  <div class="menu-item" onclick="showView('view-calendar');toggleMenu()"><i class="fas fa-calendar-alt"></i><span>Calendar & SMS</span></div>
+  <div class="menu-item" onclick="showView('view-vocab');toggleMenu()"><i class="fas fa-book"></i><span>Court Vocabulary</span></div>
+  <div class="menu-item" onclick="showView('view-courts');toggleMenu()"><i class="fas fa-landmark"></i><span>US Courts Directory</span></div>
+  <div class="menu-item" onclick="showView('view-watch-learn');toggleMenu()"><i class="fas fa-play-circle"></i><span>Watch & Learn</span></div>
+  <div class="menu-item" onclick="showView('view-onboarding');toggleMenu()"><i class="fas fa-graduation-cap"></i><span>Admin Onboarding</span></div>
+  <div class="menu-item" onclick="showView('view-about');toggleMenu()"><i class="fas fa-info-circle"></i><span>About VideoCourts</span></div>
+  <div class="menu-item" onclick="showView('view-support');toggleMenu()"><i class="fas fa-headset"></i><span>Support / FAQs</span></div>
+  <div class="menu-item" onclick="showView('view-terms');toggleMenu()"><i class="fas fa-file-contract"></i><span>Terms & Conditions</span></div>
+  <div class="menu-item" onclick="showView('view-privacy');toggleMenu()"><i class="fas fa-user-shield"></i><span>Privacy Policy</span></div>
+  <div class="border-t border-slate-700 my-2"></div>
+  <div class="menu-item" onclick="showView('view-executives');toggleMenu()" style="background:rgba(59,130,246,0.1)"><i class="fas fa-user-tie"></i><span>Executive Leadership</span></div>
+  <div class="menu-item" onclick="showView('view-investors');toggleMenu()" style="background:rgba(251,191,36,0.1)"><i class="fas fa-chart-line"></i><span>Investment & Sponsorship</span></div>
+  <div class="menu-item" onclick="showView('view-pilots');toggleMenu()" style="background:rgba(16,185,129,0.1)"><i class="fas fa-flask"></i><span>Pilot Programs</span></div>
+  <div class="border-t border-slate-700 my-2"></div>
+  <div class="menu-item" onclick="openExternal('https://www.legalshield.com/','LegalShield Network')"><i class="fas fa-external-link-alt"></i><span>LegalShield (Live)</span></div>
+  <div class="menu-item" onclick="openExternal('https://www.uscourts.gov/federal-court-finder/find','Federal Courts Finder')"><i class="fas fa-external-link-alt"></i><span>Federal Courts (Live)</span></div>
+  <div class="menu-item" onclick="openExternal('https://naacp.org/','NAACP')"><i class="fas fa-external-link-alt"></i><span>NAACP (Live)</span></div>
+  <div class="menu-item" onclick="openExternal('https://courtcall.com/','CourtCall')"><i class="fas fa-external-link-alt"></i><span>CourtCall (Live)</span></div>
+  <div class="menu-item" onclick="openExternal('https://www.tylertech.com/','Tyler Technologies')"><i class="fas fa-external-link-alt"></i><span>Tyler Tech (Live)</span></div>
+  <div class="menu-item" onclick="openExternal('https://www.nationalassociationofbailagents.org/','National Bail Agents')"><i class="fas fa-external-link-alt"></i><span>Bail Agents Association</span></div>
+</div>
+
+<div id="view-home" class="view active">
+  <div class="flash-banner" onclick="showView('view-virtual-request')"><i class="fas fa-bolt"></i> REQUEST A VIRTUAL COURT APPEARANCE <i class="fas fa-bolt"></i></div>
+  
+  <div class="hero-section">
+    <div class="hero-overlay"></div>
+    <button class="close-x" onclick="this.parentElement.style.display='none'" title="Dismiss">×</button>
+    <div class="hero-content">
+      <div class="logo-container">
+        <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 35 55 L 60 55 L 48 85 L 73 85 L 35 135 L 48 100 L 25 100 Z" fill="#3b82f6" stroke="#06b6d4" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M 205 55 L 180 55 L 192 85 L 167 85 L 205 135 L 192 100 L 215 100 Z" fill="#3b82f6" stroke="#06b6d4" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="70" y="60" width="100" height="65" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="3"/>
+          <circle cx="120" cy="92" r="28" fill="#0f172a" stroke="#3b82f6" stroke-width="3"/>
+          <circle cx="120" cy="92" r="20" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+          <circle cx="120" cy="92" r="12" fill="#0a0e1a" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="114" cy="86" r="3.5" fill="#60a5fa"/>
+          <rect x="105" y="52" width="30" height="10" rx="3" fill="#3b82f6"/>
+          <text x="120" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="900" font-size="22" fill="#e2e8f0" letter-spacing="1">VIDEOCOURTS™</text>
+          <text x="120" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="10" fill="#94a3b8" letter-spacing="2">WE BRING THE JUDGE TO YOUR COURT</text>
+        </svg>
       </div>
-      <p class="tagline">Secure Virtual Courtrooms for Modern Justice</p>
-      <div class="features-list">Biometric-verified • Evidence-ready • Tyler/CM·ECF Compatible</div>
-      
-      <div class="nav-grid">
-        <a href="#dashboard" class="nav-link" onclick="showSection('dashboard');return false">Dashboard</a>
-        <a href="#courtroom" class="nav-link" onclick="showSection('courtroom');return false">Courtroom</a>
-        <a href="#evidence" class="nav-link" onclick="showSection('evidence');return false">Evidence</a>
-        <a href="#bioenroll" class="nav-link" onclick="showEnroll();return false">Bio-Enroll</a>
-        <a href="#tyler" class="nav-link" style="grid-column:1/-1" onclick="alert('Tyler Integration: Coming soon in pilot programs')">Tyler Integration</a>
+      <div class="hero-badges">
+        <div class="hero-badge"><i class="fas fa-shield-halved"></i> CJIS Compliant</div>
+        <div class="hero-badge"><i class="fas fa-check-circle"></i> FedRAMP</div>
+        <div class="hero-badge"><i class="fas fa-check-circle"></i> NIST 800-63-3</div>
       </div>
-      
-      <button class="btn" onclick="showEnroll()">Start Bio-Enrollment</button><br>
-      <button class="btn btn-secondary" onclick="searchCase()">Search Case</button>
+      <h1>Secure Access To <span class="grad-text">Remote Courts</span> Proceedings</h1>
+      <p>Welcome to the Hybrid and Virtual Courts. As courtrooms around the country embrace a new hybrid reality, judicial leaders are tasked with understanding how to use technology to improve experiences and increase access to justice.</p>
+      <div class="hero-cta">
+        <button onclick="showView('view-idme')" class="btn btn-idme"><i class="fas fa-fingerprint"></i> GET ENROLLED</button>
+        <button onclick="openExternal('https://videocourts-809gdfe.gamma.site/','VideoCourts')" class="btn btn-secondary" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3)"><i class="fas fa-info-circle"></i> Learn More</button>
+      </div>
+      <div style="margin-top:24px">
+        <form onsubmit="event.preventDefault();showView('view-idme')" style="display:flex;gap:8px;max-width:400px;margin:0 auto">
+          <input type="email" placeholder="Enter your email" class="input" style="margin:0;flex:1;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);color:#fff">
+          <button type="submit" class="btn btn-idme" style="width:auto;margin:0;padding:14px 20px"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
     </div>
-
-    <div class="notice">
-      <strong>⚠️ Notice:</strong> VideoCourts™ complies with CA Rules of Court 3.670, NC Gen. Stat. Ch. 7A, SOC 2 Type II, HIPAA, ADA/WCAG 2.1 AA, and ESIGN/UETA. All proceedings are cryptographically recorded and exported to Tyler/CM·ECF with immutable audit trails.
-    </div>
-
-    <div class="demo-mode">
-      ⚠️ Backend in local mode (demo)
-    </div>
-
-    <div class="feature-card">
-      <h3>🔐 Biometric Identity</h3>
-      <p>FacePrintPay™ verification with risk scoring and cryptographic access tokens. Multi-factor authentication ensures positive identification before every proceeding.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>🎥 Virtual Courtrooms</h3>
-      <p>HD WebRTC video conferencing with judge-controlled participant management, breakout rooms for attorney consultation, and automatic recording.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>⚖️ Evidence Chain</h3>
-      <p>TotalRecall™ forensic engine: SHA-256 hashing, blockchain-style manifest, immutable audit trail, and cryptographic receipts for every exhibit.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>📤 Tyler/CM·ECF Export</h3>
-      <p>One-click export to court management systems with LEGyC Protocol v2.0 compliance metadata and automatic filing confirmation.</p>
-    </div>
-
-    <footer>
-      <p>© 2026 VideoCourts™ by CyGeL White • FacePrintPay™ • TotalRecall™ • LEGyC Protocol v2.0</p>
-      <p style="margin:10px 0">Pilot Programs: Orange County CA • North Carolina • Tyler Technologies Partner</p>
-    </footer>
   </div>
 
-  <script>
-    // API Configuration
-    const API_BASE = '/api';
-    
-    // Check API health
-    async function checkAPI() {
-      try {
-        const res = await fetch(API_BASE + '/health');
-        const data = await res.json();
-        console.log('✅ API Status:', data);
-        document.querySelector('.demo-mode').innerHTML = '✅ Backend connected: ' + data.status;
-        document.querySelector('.demo-mode').style.background = '#064e3b';
-        document.querySelector('.demo-mode').style.borderColor = '#10b981';
-        document.querySelector('.demo-mode').style.color = '#10b981';
-      } catch (err) {
-        console.log('⚠️ API: Demo mode');
-      }
-    }
-    
-    // Show enrollment section
-    function showEnroll() {
-      const caseNum = prompt('Enter your case number:');
-      if (!caseNum) return;
-      
-      const name = prompt('Enter your full legal name:');
-      if (!name) return;
-      
-      const email = prompt('Enter your email address:');
-      if (!email) return;
-      
-      const role = prompt('Select your role:\n(defendant, attorney, judge, witness, clerk)');
-      
-      alert('✅ Bio-Enrollment initiated for:\n\nCase: ' + caseNum + '\nName: ' + name + '\nEmail: ' + email + '\nRole: ' + (role || 'Not specified') + '\n\nIn production: This would call /api/identity/check');
-      
-      // In production, this would be:
-      /*
-      fetch(API_BASE + '/identity/check', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          case_id: caseNum,
-          user_id: email,
-          full_name: name,
-          role: role || 'defendant'
-        })
-      })
-      .then(r => r.json())
-      .then(data => {
-        if (data.verified) {
-          alert('✅ Identity verified! Proceed to payment.');
-        } else {
-          alert('⚠️ Verification pending');
-        }
-      });
-      */
-    }
-    
-    // Search case
-    function searchCase() {
-      const query = prompt('Enter case number or phone number:');
-      if (!query) return;
-      
-      alert('🔍 Searching for: ' + query + '\n\nIn production: This would query /api/sessions');
-      
-      // In production:
-      /*
-      fetch(API_BASE + '/sessions?query=' + encodeURIComponent(query))
-        .then(r => r.json())
-        .then(data => {
-          if (data.session_id) {
-            alert('📅 Session Found:\nID: ' + data.session_id + '\nStatus: ' + data.status);
-          } else {
-            alert('⚠️ No session found');
-          }
-        });
-      */
-    }
-    
-    // Show section (for navigation)
-    function showSection(section) {
-      alert('📍 Navigating to: ' + section + '\n\nIn production: This would load the ' + section + ' page/component');
-    }
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', checkAPI);
-    console.log('🎯 VideoCourts™ loaded • All buttons functional');
-  </script>
-<!-- Rules Modal --><div id="rulesModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:99999;align-items:center;justify-content:center;padding:20px;"><div style="background:linear-gradient(135deg,#0f172a,#1e293b);max-width:700px;width:100%;max-height:90vh;overflow-y:auto;border-radius:16px;border:2px solid #f97316;box-shadow:0 30px 60px rgba(249,115,22,0.4);"><div style="background:linear-gradient(135deg,#f97316,#ea580c);padding:20px;border-radius:16px 16px 0 0;text-align:center;"><h2 style="color:white;margin:0;font-size:1.5em">⚖️ Digital Courts Rules </body>amp; Conduct</h2><p style="color:rgba(255,255,255,0.9);margin:8px 0 0;font-size:0.9em">Required Agreement for Virtual Court Access</p></div><div style="padding:25px;color:#e2e8f0;line-height:1.7;font-size:0.95em;"><div style="background:rgba(249,115,22,0.1);border-left:4px solid #f97316;padding:15px;margin-bottom:20px;border-radius:8px;"><p style="margin:0;font-weight:600;color:#f97316">⚠️ IMPORTANT: By accessing VideoCourts™, you agree to comply with all court rules. Violations may result in removal and sanctions.</p></div><h3 style="color:#00d4ff;margin:20px 0 12px;font-size:1.2em">1. General Conduct</h3><ul style="margin:8px 0;padding-left:22px;"><li>Dress appropriately (business attire)</li><li>Address judge as "Your Honor"</li><li>Remain muted when not speaking</li><li>Camera must stay ON during proceedings</li><li>No recording or screenshotting</li></ul><h3 style="color:#00d4ff;margin:20px 0 12px;font-size:1.2em">2. Technical Requirements</h3><ul style="margin:8px 0;padding-left:22px;"><li>Stable internet (5+ Mbps)</li><li>Quiet, well-lit private location</li><li>Test setup 24hrs before hearing</li><li>Join 10-15 minutes early</li></ul><h3 style="color:#00d4ff;margin:20px 0 12px;font-size:1.2em">3. Biometric Verification</h3><ul style="margin:8px 0;padding-left:22px;"><li>Complete enrollment before first appearance</li><li>Identity verification required each session</li><li>Biometric data encrypted, used for auth only</li></ul><div style="background:rgba(16,185,129,0.1);border:2px solid #10b981;padding:18px;margin:25px 0;border-radius:10px;"><label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;"><input type="checkbox" id="rulesAgreement" style="width:18px;height:18px;margin-top:2px;accent-color:#10b981;"><span style="color:#e2e8f0;font-size:0.9em;">I have read, understand, and agree to comply with all Digital Courts Rules </body>amp; Conduct. I understand violations may result in removal, fines, or sanctions.</span></label></div></div><div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:12px;justify-content:flex-end;background:rgba(15,23,42,0.5);"><button onclick="declineRules()" style="padding:12px 24px;background:rgba(255,255,255,0.1);color:#e2e8f0;border:1px solid rgba(255,255,255,0.2);border-radius:8px;cursor:pointer;font-weight:600;">Decline</button><button onclick="acceptRules()" style="padding:12px 24px;background:linear-gradient(135deg,#10b981,#059669);color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;box-shadow:0 4px 15px rgba(16,185,129,0.3);" disabled id="agreeBtn">I Agree </body>amp; Continue</button></div></div></div><script>function showRulesModal(){document.getElementById("rulesModal").style.display="flex";document.getElementById("rulesModal").style.alignItems="center";document.getElementById("rulesModal").style.justifyContent="center"}function hideRulesModal(){document.getElementById("rulesModal").style.display="none"}function acceptRules(){if(document.getElementById("rulesAgreement").checked){hideRulesModal();alert("✅ Thank you. You may now access VideoCourts™.");localStorage.setItem("rulesAccepted","true");}else{alert("⚠️ Please check the agreement box to continue.")}}function declineRules(){alert("⚠️ You must agree to the Rules </body> Conduct to access VideoCourts™.");window.location.href="about:blank";}document.getElementById("rulesAgreement").addEventListener("change",function(){document.getElementById("agreeBtn").disabled=!this.checked});window.addEventListener("load",function(){if(!localStorage.getItem("rulesAccepted")){showRulesModal()}});</script></body>
+  <div class="card" style="padding:0;overflow:hidden">
+    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);padding:32px;text-align:center">
+      <h3 class="text-2xl font-bold mb-3">Remote Appearances. Simplified.</h3>
+      <p class="text-slate-400 mb-4">VideoCourt's Remote Appearance Platform combines the latest technologies with exceptional customer service, creating the ideal remote court appearance.</p>
+      <button onclick="openExternal('https://videocourts-809gdfe.gamma.site/','VideoCourts')" class="btn btn-primary" style="width:auto;margin:0 auto;padding:12px 28px"><i class="fas fa-arrow-right"></i> Find Out More</button>
+    </div>
+  </div>
+
+  <div class="card card-glow">
+    <div class="flex items-center gap-2 mb-3"><i class="fas fa-search text-blue-400"></i><span class="font-semibold">Search By Case Number or Phone Number</span></div>
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <input id="case-input" type="text" placeholder="Case # or Phone" class="input" style="margin:0;flex:1">
+      <button onclick="searchCase()" class="btn btn-primary" style="width:auto;padding:14px 18px;margin:0"><i class="fas fa-search"></i></button>
+    </div>
+    <div id="case-result" class="mt-2"></div>
+  </div>
+
+  <div class="card" style="border-color:#00a3e0">
+    <h3 class="font-bold text-lg mb-2 text-center">VERIFY WITH ID.me TO GAIN ACCESS TO YOUR COURT</h3>
+    <p class="text-xs text-slate-400 text-center mb-4">Multiple state government agencies have partnered with ID.me to create a highly secure identity verification process.</p>
+    <button onclick="window.open('https://api.id.me/en/session/new', '_blank')" class="btn btn-idme"><i class="fas fa-fingerprint"></i> BIO-ENROLL HERE</button>
+  </div>
+
+  <div class="section-title"><i class="fas fa-list-ol"></i> How It Works: Step by Step</div>
+  <div class="info-card">
+    <div class="step-card" style="display:flex;gap:16px;margin-bottom:16px"><div style="width:32px;height:32px;border-radius:50%;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">1</div><div><h4 class="font-bold text-white mb-1">Bio-Enroll & Consent</h4><p class="text-xs text-slate-400">Verify identity via ID.me and provide explicit biometric consent.</p></div></div>
+    <div class="step-card" style="display:flex;gap:16px;margin-bottom:16px"><div style="width:32px;height:32px;border-radius:50%;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">2</div><div><h4 class="font-bold text-white mb-1">Submit Request Form</h4><p class="text-xs text-slate-400">Fill out the official virtual appearance form and pay the $1.99 processing fee.</p></div></div>
+    <div class="step-card" style="display:flex;gap:16px;margin-bottom:16px"><div style="width:32px;height:32px;border-radius:50%;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">3</div><div><h4 class="font-bold text-white mb-1">Court Review & Approval</h4><p class="text-xs text-slate-400">The presiding judge reviews your request. SMS/Email notification sent.</p></div></div>
+    <div class="step-card" style="display:flex;gap:16px;margin-bottom:16px"><div style="width:32px;height:32px;border-radius:50%;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">4</div><div><h4 class="font-bold text-white mb-1">Pay $19.99 & Enter Court</h4><p class="text-xs text-slate-400">Upon approval, pay the $19.99 platform access fee per case (or annual), test audio/video, and join.</p></div></div>
+  </div>
+
+  <div class="section-title"><i class="fas fa-hand-pointer"></i> Click A Tab Below to Get Started Today</div>
+  <div class="grid grid-cols-2 gap-3">
+    <div class="module-card" onclick="showView('view-courtroom')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-red"><i class="fas fa-video"></i></div><div class="font-semibold">Live Courtroom</div><div class="module-card-tagline">Breakout rooms, timer, invite & share</div></div>
+    <div class="module-card" onclick="showView('view-efile')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-emerald"><i class="fas fa-file-upload"></i></div><div class="font-semibold">Nationwide e-File</div><div class="module-card-tagline">Secure e-filing across all 50 states</div></div>
+    <div class="module-card" onclick="showView('view-bail')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-amber"><i class="fas fa-hand-holding-dollar"></i></div><div class="font-semibold">Virtual Bail</div><div class="module-card-tagline">Access 1000s of bail bondsmen virtually</div></div>
+    <div class="module-card" onclick="showView('view-arbitration')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-cyan"><i class="fas fa-scale-balanced"></i></div><div class="font-semibold">Arbitration Portal</div><div class="module-card-tagline">National ADR & binding arbitration</div></div>
+    <div class="module-card" onclick="showView('view-mediation')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-rose"><i class="fas fa-handshake"></i></div><div class="font-semibold">Mediation & Visitation</div><div class="module-card-tagline">Family court & co-parenting tools</div></div>
+    <div class="module-card" onclick="showView('view-parole')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-teal"><i class="fas fa-user-check"></i></div><div class="font-semibold">Parole & Probation</div><div class="module-card-tagline">Remote check-ins & compliance</div></div>
+    <div class="module-card" onclick="showView('view-inmate')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-red"><i class="fas fa-building-shield"></i></div><div class="font-semibold">JailCourt</div><div class="module-card-tagline">Remote appearances from detention</div></div>
+    <div class="module-card" onclick="showView('view-ice')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-bg"><i class="fas fa-passport"></i></div><div class="font-semibold">ICE / Immigration</div><div class="module-card-tagline">EOIR-compliant remote hearings</div></div>
+    <div class="module-card" onclick="showView('view-vault')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-purple"><i class="fas fa-vault"></i></div><div class="font-semibold">Evidence Vault</div><div class="module-card-tagline">Biometric-locked WORM storage</div></div>
+    <div class="module-card" onclick="showView('view-courtcam')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-red"><i class="fas fa-tv"></i></div><div class="font-semibold">Court Cam TV</div><div class="module-card-tagline">Live streams & case archives</div></div>
+    <div class="module-card" onclick="openExternal('https://www.legalshield.com/','LegalShield')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-legalshield"><i class="fas fa-shield-halved"></i></div><div class="font-semibold">LegalShield</div><div class="module-card-tagline">Get the protection you deserve</div></div>
+    <div class="module-card" onclick="openExternal('https://naacp.org/','NAACP')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-naacp"><i class="fas fa-hand-fist"></i></div><div class="font-semibold">Civil Rights</div><div class="module-card-tagline">Equitable access for all</div></div>
+    <div class="module-card" onclick="showView('view-mock')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-purple"><i class="fas fa-scale-balanced"></i></div><div class="font-semibold">Mock Trial Lab</div><div class="module-card-tagline">Practice with AI Judge feedback</div></div>
+    <div class="module-card" onclick="showView('view-watch-learn')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-bg"><i class="fas fa-play-circle"></i></div><div class="font-semibold">Watch & Learn</div><div class="module-card-tagline">Tutorials & training videos</div></div>
+    <div class="module-card" onclick="showView('view-onboarding')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-emerald"><i class="fas fa-graduation-cap"></i></div><div class="font-semibold">Admin Onboarding</div><div class="module-card-tagline">Court admin training portal</div></div>
+    <div class="module-card" onclick="showView('view-executives')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-indigo"><i class="fas fa-user-tie"></i></div><div class="font-semibold">Executive Team</div><div class="module-card-tagline">Leadership & vision</div></div>
+    <div class="module-card" onclick="showView('view-investors')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-gold"><i class="fas fa-chart-line"></i></div><div class="font-semibold">Investment & Sponsorship</div><div class="module-card-tagline">Partner with VideoCourts</div></div>
+    <div class="module-card" onclick="showView('view-pilots')"><div class="module-arrow"><i class="fas fa-chevron-right"></i></div><div class="module-card-thumb grad-teal"><i class="fas fa-flask"></i></div><div class="font-semibold">Pilot Programs</div><div class="module-card-tagline">Join our judicial pilots</div></div>
+  </div>
+
+  <div class="section-title"><i class="fas fa-share-alt"></i> Connect With Us</div>
+  <div class="card">
+    <div class="flex justify-center gap-4 mb-4">
+      <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p class="text-xs text-slate-400 text-center">Follow VideoCourts™ for updates, legal tech news, and platform announcements.</p>
+    <div class="text-center mt-4 text-xs text-slate-500">
+      <p>© 2026 VideoCourts™ Inc. All rights reserved.</p>
+      <p class="mt-1">1 Virtual Way, USA</p>
+    </div>
+  </div>
+</div>
+
+<div id="view-virtual-request" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-amber"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-paper-plane"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Request Virtual Court Appearance</h2><p>Skip the commute. Request a remote hearing from the comfort of your home.</p></div>
+  </div>
+  <div class="info-card">
+    <div class="card" style="background:rgba(245,158,11,.1);border-color:#f59e0b;padding:14px;margin-bottom:16px">
+      <h4 class="font-bold text-amber-400 text-sm mb-3"><i class="fas fa-info-circle"></i> Two-Tier Fee Structure</h4>
+      <div class="flex items-center gap-3 mb-3"><div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-black font-bold text-sm">1</div><div><div class="font-bold text-sm text-white">Request Processing Fee: $1.99</div><div class="text-xs text-slate-400">Paid upfront to submit request to Clerk/Judge.</div></div></div>
+      <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-black font-bold text-sm">2</div><div><div class="font-bold text-sm text-white">Platform Access Fee: $19.99 per case</div><div class="text-xs text-slate-400">Triggered ONLY upon court approval (or annual platform license).</div></div></div>
+    </div>
+    <label class="text-xs text-slate-400 font-bold uppercase">Case Type</label>
+    <select class="input"><option>Civil</option><option>Criminal</option><option>Immigration</option><option>Arbitration</option><option>Family Law</option><option>Bankruptcy</option><option>Traffic</option><option>Small Claims</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Jurisdiction / State</label>
+    <select class="input"><option>All 50 States & Federal (Unified)</option><option>North Carolina (Pioneer Standard)</option><option>California</option><option>New York</option><option>Texas</option><option>Florida</option><option>Federal (CM/ECF)</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Case Number</label>
+    <input type="text" class="input" placeholder="e.g., CR-2024-1087">
+    <label class="text-xs text-slate-400 font-bold uppercase">Full Legal Name</label>
+    <input type="text" class="input" placeholder="As it appears on court documents">
+    <label class="text-xs text-slate-400 font-bold uppercase">Reason for Remote Appearance</label>
+    <select class="input"><option>Travel constraints / Hardship</option><option>Reducing defendant transportation costs (Public Safety)</option><option>Scheduling delays / Court efficiency</option><option>Limited courtroom space</option></select>
+    <button onclick="showToast('Request submitted for $1.99 processing. Clerk will review.')" class="btn btn-success"><i class="fas fa-paper-plane"></i> Submit Request ($1.99)</button>
+  </div>
+</div>
+
+<div id="view-courtroom" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-red"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-video"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Live Virtual Courtroom</h2><p>Secure, court-grade video sessions with breakout rooms, timer, and TotalRecall recording.</p></div>
+  </div>
+  <div class="info-card">
+    <div class="flex justify-between items-center mb-3"><span class="text-sm font-bold text-red-400"><i class="fas fa-circle text-xs animate-pulse"></i> LIVE SESSION</span><span class="text-xs text-slate-400">Case: CR-2024-1087 · State v. Dalton</span></div>
+    <div class="timer-display" id="court-timer" style="font-family:monospace;font-size:32px;font-weight:700;color:#10b981;text-align:center;padding:16px;background:#0f172a;border-radius:12px;border:1px solid #1e293b;margin-bottom:12px">00:14:02</div>
+    <div class="btn-row mb-4"><button onclick="toggleTimer()" class="btn btn-success" id="timer-btn"><i class="fas fa-play"></i> Start Timer</button><button onclick="resetTimer()" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset</button></div>
+    <div class="video-grid mb-4" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="video-participant" style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative"><div class="avatar" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;font-weight:700">JM</div><div class="name" style="position:absolute;bottom:6px;left:6px;font-size:11px;background:rgba(0,0,0,0.7);padding:2px 8px;border-radius:6px">Hon. Martinez (Judge)</div><div class="mic-status" style="position:absolute;top:6px;right:6px;font-size:12px;color:#10b981"><i class="fas fa-microphone"></i></div></div>
+      <div class="video-participant" style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative"><div class="avatar" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;font-weight:700">JD</div><div class="name" style="position:absolute;bottom:6px;left:6px;font-size:11px;background:rgba(0,0,0,0.7);padding:2px 8px;border-radius:6px">John Dalton (Defendant)</div><div class="mic-status" style="position:absolute;top:6px;right:6px;font-size:12px;color:#ef4444"><i class="fas fa-microphone-slash"></i></div></div>
+      <div class="video-participant" style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative"><div class="avatar" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;font-weight:700">AJ</div><div class="name" style="position:absolute;bottom:6px;left:6px;font-size:11px;background:rgba(0,0,0,0.7);padding:2px 8px;border-radius:6px">Att. Johnson (Defense)</div><div class="mic-status" style="position:absolute;top:6px;right:6px;font-size:12px;color:#ef4444"><i class="fas fa-microphone-slash"></i></div></div>
+      <div class="video-participant" style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative"><div class="avatar" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;font-weight:700">RC</div><div class="name" style="position:absolute;bottom:6px;left:6px;font-size:11px;background:rgba(0,0,0,0.7);padding:2px 8px;border-radius:6px">R. Chen (Clerk)</div><div class="mic-status" style="position:absolute;top:6px;right:6px;font-size:12px;color:#ef4444"><i class="fas fa-microphone-slash"></i></div></div>
+    </div>
+    <div class="btn-row mb-4"><button onclick="toggleMic()" class="btn btn-secondary"><i class="fas fa-microphone" id="mic-icon"></i> Mic</button><button onclick="toggleCam()" class="btn btn-secondary"><i class="fas fa-video" id="cam-icon"></i> Camera</button></div>
+    <div class="btn-row mb-4"><button onclick="openBreakout()" class="btn btn-purple"><i class="fas fa-users"></i> Breakout Rooms</button><button onclick="openInvite()" class="btn btn-primary"><i class="fas fa-user-plus"></i> Invite to Court</button></div>
+    <button onclick="openRules()" class="btn btn-amber"><i class="fas fa-gavel"></i> View Courtroom Rules & Swear-In</button>
+    <div id="breakout-panel" style="display:none" class="mt-4">
+      <h4 class="font-bold text-sm mb-2">Breakout Rooms</h4>
+      <div class="breakout-room" style="background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(236,72,153,.1));border:1px solid rgba(139,92,246,.3);border-radius:10px;padding:10px;margin-bottom:8px"><div class="flex justify-between items-center"><span class="text-sm font-semibold">Room 1: Attorney-Client Privileged</span><span class="text-xs text-emerald-400"><i class="fas fa-lock"></i> Private</span></div><p class="text-xs text-slate-400 mt-1">Participants: Att. Johnson, John Dalton</p></div>
+      <div class="breakout-room" style="background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(236,72,153,.1));border:1px solid rgba(139,92,246,.3);border-radius:10px;padding:10px;margin-bottom:8px"><div class="flex justify-between items-center"><span class="text-sm font-semibold">Room 2: Prosecution Prep</span><span class="text-xs text-emerald-400"><i class="fas fa-lock"></i> Private</span></div><p class="text-xs text-slate-400 mt-1">Participants: State Attorney</p></div>
+      <button onclick="createBreakout()" class="btn btn-secondary mt-2"><i class="fas fa-plus"></i> Create New Breakout Room</button>
+    </div>
+    <div id="invite-panel" style="display:none" class="mt-4">
+      <h4 class="font-bold text-sm mb-2">Invite to Court Session</h4>
+      <input type="email" class="input" placeholder="Enter email address to invite">
+      <input type="text" class="input" placeholder="Or enter phone number for SMS invite">
+      <div class="btn-row"><button onclick="sendInvite('email')" class="btn btn-primary"><i class="fas fa-envelope"></i> Send Email Invite</button><button onclick="sendInvite('sms')" class="btn btn-success"><i class="fas fa-sms"></i> Send SMS Invite</button></div>
+      <button onclick="shareCourtLink()" class="btn btn-secondary"><i class="fas fa-share-alt"></i> Copy Secure Court Link</button>
+    </div>
+  </div>
+</div>
+
+<div id="view-efile" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-emerald"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-file-upload"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Nationwide e-File</h2><p>Looking for secure, easy access to file a case? Look no further — we have you covered with our national e-file options.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>The Unified Platform Rolling Out Nationwide</h3>
+    <p>VideoCourts connects directly to Odyssey, CM/ECF, and Tyler Technologies gateways across all 50 states. One seamless, sovereign ecosystem for virtual hearings and nationwide e-filing.</p>
+    <label class="text-xs text-slate-400 font-bold uppercase mt-4 block">Select Jurisdiction / State</label>
+    <select class="input"><option>All 50 States & Federal (Unified)</option><option>North Carolina (Pioneer Standard)</option><option>California</option><option>New York</option><option>Texas</option><option>Florida</option><option>Federal (CM/ECF)</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Case Type</label>
+    <select class="input"><option>Civil</option><option>Criminal</option><option>Immigration</option><option>Arbitration</option><option>Family Law</option><option>Bankruptcy</option></select>
+    <div class="upload-zone mt-4" onclick="showToast('Opening secure file picker...')" style="border:2px dashed #3b82f6;border-radius:12px;padding:30px;text-align:center;background:rgba(59,130,246,.05);cursor:pointer"><i class="fas fa-cloud-upload-alt text-3xl text-blue-400 mb-2"></i><div class="font-semibold">Click to Upload Documents</div><div class="text-xs text-slate-400 mt-1">PDF, DOCX up to 50MB. Scanned and hashed via WORM storage.</div></div>
+    <button onclick="showToast('Document submitted for $1.99 processing fee.')" class="btn btn-success mt-4"><i class="fas fa-paper-plane"></i> Submit Request ($1.99)</button>
+  </div>
+</div>
+
+<div id="view-bail" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-amber"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Virtual Bail Network</h2><p>Access 1000s of licensed bail bondsmen virtually — 24/7, from anywhere.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Complete Virtual Bail Bondsman Platform</h3>
+    <p>Securely connect with licensed bonding partners to post bail remotely. All transactions are encrypted and logged to the Total Recall Ledger.</p>
+    <input type="text" class="input" placeholder="Inmate Full Name">
+    <input type="text" class="input" placeholder="Booking Number">
+    <select class="input"><option>Select State...</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option><option>District of Columbia</option><option>Federal</option></select>
+    <button onclick="showToast('Connecting to licensed Virtual Bail Network partner...')" class="btn btn-success"><i class="fas fa-lock"></i> Initiate Secure Bail Request</button>
+    <button onclick="openExternal('https://www.nationalassociationofbailagents.org/','National Bail Agents')" class="btn btn-secondary mt-2"><i class="fas fa-external-link-alt"></i> National Bail Agents Association</button>
+  </div>
+</div>
+
+<div id="view-inmate" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-red"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-building-shield"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>JailCourt (Inmate Portal)</h2><p>Reduce transportation costs. Schedule remote appearances directly from detention facilities.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Schedule Remote Appearance from Detention</h3>
+    <p>Reduce defendant transportation costs and improve public safety by scheduling virtual JailCourt appearances directly from the detention facility.</p>
+    <input type="text" class="input" placeholder="Detention Facility Name">
+    <input type="text" class="input" placeholder="Inmate ID / SID">
+    <select class="input"><option>Arraignment</option><option>Bond Review</option><option>Status Conference</option><option>Probation Violation</option></select>
+    <button onclick="showToast('JailCourt remote appearance request submitted.')" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit JailCourt Request</button>
+  </div>
+</div>
+
+<div id="view-ice" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-passport"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Immigration Portal (ICE / EOIR)</h2><p>Constitutionally safeguarded remote hearings for immigration proceedings.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Remote Hearing Request</h3>
+    <p>Aligned with the National Scan of Authority for Remote Proceedings. This platform safeguards constitutional rights and preserves the integrity of the judicial process.</p>
+    <input type="text" class="input" placeholder="A-Number (Alien Registration Number)">
+    <select class="input"><option>Select Immigration Court Location...</option><option>Atlanta, GA</option><option>Chicago, IL</option><option>New York, NY</option><option>Los Angeles, CA</option><option>Miami, FL</option><option>Houston, TX</option></select>
+    <button onclick="showToast('EOIR Remote Hearing Request submitted securely.')" class="btn btn-success"><i class="fas fa-shield-halved"></i> Submit to EOIR Securely</button>
+  </div>
+</div>
+
+<div id="view-arbitration" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-cyan"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-scale-balanced"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>National Arbitration Portal</h2><p>Binding and non-binding arbitration services across all 50 states.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Alternative Dispute Resolution (ADR) Platform</h3>
+    <p>VideoCourts™ provides a fully integrated National Arbitration Portal connecting parties with certified arbitrators for binding and non-binding dispute resolution.</p>
+    <label class="text-xs text-slate-400 font-bold uppercase mt-4 block">Dispute Type</label>
+    <select class="input"><option>Consumer Dispute</option><option>Employment</option><option>Commercial / B2B</option><option>Insurance</option><option>Construction</option><option>Real Estate</option><option>International</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Claim Amount</label>
+    <select class="input"><option>Under $5,000</option><option>$5,000 - $25,000</option><option>$25,000 - $100,000</option><option>$100,000 - $500,000</option><option>$500,000+</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Preferred Arbitration Rules</label>
+    <select class="input"><option>AAA (American Arbitration Association)</option><option>JAMS</option><option>FINRA (Securities)</option><option>NAA (National Arbitration Forum)</option><option>Custom / Party-Agreed Rules</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Brief Description of Dispute</label>
+    <textarea class="input" rows="4" placeholder="Describe the nature of your dispute..."></textarea>
+    <button onclick="showToast('Arbitration request submitted. A certified arbitrator will be assigned within 24 hours.')" class="btn btn-cyan"><i class="fas fa-gavel"></i> Submit Arbitration Request</button>
+  </div>
+</div>
+
+<div id="view-mediation" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-rose"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-handshake"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Mediation & Visitation</h2><p>Family court mediation, co-parenting tools, and secure virtual visitation.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Family Court Mediation Services</h3>
+    <p>VideoCourts™ offers a dedicated Mediation & Visitation module designed for family law matters.</p>
+    <label class="text-xs text-slate-400 font-bold uppercase mt-4 block">Service Type</label>
+    <select class="input"><option>Family Mediation</option><option>Divorce Mediation</option><option>Child Custody Mediation</option><option>Child Support Mediation</option><option>Virtual Visitation Setup</option><option>Co-Parenting Communication</option><option>Supervised Visitation</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Case Number (if applicable)</label>
+    <input type="text" class="input" placeholder="e.g., FAM-2024-0042">
+    <label class="text-xs text-slate-400 font-bold uppercase">Other Party Contact Email</label>
+    <input type="email" class="input" placeholder="otherparty@example.com">
+    <button onclick="showToast('Mediation request submitted. A certified mediator will contact both parties within 48 hours.')" class="btn btn-rose"><i class="fas fa-handshake"></i> Request Mediation Session</button>
+  </div>
+</div>
+
+<div id="view-parole" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-teal"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-user-check"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Parole & Probation Module</h2><p>Remote check-ins, compliance tracking, and officer communication.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Remote Supervision & Compliance Platform</h3>
+    <p>VideoCourts™ provides a secure Parole & Probation module enabling remote check-ins, compliance monitoring, and direct communication between offenders and their supervising officers.</p>
+    <label class="text-xs text-slate-400 font-bold uppercase mt-4 block">Offender ID / Case Number</label>
+    <input type="text" class="input" placeholder="e.g., PP-2024-00892">
+    <label class="text-xs text-slate-400 font-bold uppercase">Supervising Officer</label>
+    <input type="text" class="input" placeholder="Officer Name">
+    <label class="text-xs text-slate-400 font-bold uppercase">Check-In Type</label>
+    <select class="input"><option>Scheduled Video Check-In</option><option>Random Compliance Check</option><option>Drug Test Observation</option><option>Employment Verification</option><option>Residence Verification</option><option>Program Completion Report</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Notes for Officer (optional)</label>
+    <textarea class="input" rows="3" placeholder="Any updates or concerns to report..."></textarea>
+    <button onclick="showToast('Remote check-in submitted. Officer will review within 24 hours.')" class="btn btn-teal"><i class="fas fa-user-check"></i> Submit Check-In</button>
+  </div>
+</div>
+
+<div id="view-vault" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-purple"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-vault"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Secure Evidence Vault</h2><p>Biometric-locked, WORM-compliant storage for all case files and evidence.</p></div>
+  </div>
+  <div class="info-card text-center py-8">
+    <i class="fas fa-lock text-5xl text-slate-600 mb-4" id="vault-icon"></i>
+    <h3 class="font-bold text-xl mb-2">Vault Locked</h3>
+    <p class="text-xs text-slate-400 mb-4">WORM-compliant, encrypted storage. Biometric verification required.</p>
+    <div class="hash-text mb-4" id="vault-hash" style="font-family:monospace;font-size:12px;color:#10b981;word-break:break-all;background:#0f172a;padding:8px;border-radius:6px;border:1px solid #1e293b">Last hash: 0x7bcca286... Updated 2s ago</div>
+    <button onclick="simulateBiometric()" class="btn btn-purple"><i class="fas fa-fingerprint"></i> Unlock Vault (Biometric)</button>
+  </div>
+</div>
+
+<div id="view-forms" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-red"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-file-pdf"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Court Forms (Fill / Download PDF)</h2><p>Free, fillable PDF forms for every jurisdiction. Download or e-file directly.</p></div>
+  </div>
+  <div class="info-card">
+    <p class="mb-4">Download free, fillable PDF forms. A $1.99 processing fee applies upon e-filing submission.</p>
+    <div class="module-card mb-3" onclick="showToast('Opening fillable PDF: Motion for Remote Hearing...')" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;text-align:center;cursor:pointer"><div class="font-bold text-sm">Motion for Fully Remote / Hybrid Remote Hearing</div><div class="text-xs text-slate-400">Universal Standard Form</div></div>
+    <div class="module-card mb-3" onclick="showToast('Opening fillable PDF: Indigent Fee Waiver...')" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;text-align:center;cursor:pointer"><div class="font-bold text-sm">Indigent Fee Waiver Application</div><div class="text-xs text-slate-400">Request free platform access from Clerk</div></div>
+    <div class="module-card mb-3" onclick="showToast('Opening fillable PDF: Universal Subpoena...')" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;text-align:center;cursor:pointer"><div class="font-bold text-sm">Universal Subpoena Request</div><div class="text-xs text-slate-400">Civil / Criminal Fillable PDF</div></div>
+  </div>
+</div>
+
+<div id="view-esign" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-purple"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-signature"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>E-Signature</h2><p>Execute court documents digitally. Every signature hashed to the Total Recall Ledger.</p></div>
+  </div>
+  <div class="info-card">
+    <p class="text-sm text-slate-400 mb-3">Sign your name below to execute court documents digitally. Hashed to Total Recall Ledger.</p>
+    <canvas id="sig-canvas" style="background:#fff;border-radius:8px;cursor:crosshair;width:100%;height:150px;border:1px solid #334155"></canvas>
+    <div class="btn-row mt-3"><button onclick="clearCanvas()" class="btn btn-secondary">Clear</button><button onclick="showToast('Document digitally signed and hashed.')" class="btn btn-success">Apply Signature</button></div>
+  </div>
+</div>
+
+<div id="view-notary" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-stamp"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Remote Online Notarization (RON)</h2><p>Connect with commissioned notaries via secure video session.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Remote Online Notarization</h3>
+    <p>Execute documents with a commissioned notary via secure video session. All sessions are recorded and hashed to the Total Recall Ledger.</p>
+    <input type="text" class="input" placeholder="Document Name">
+    <select class="input"><option>Select State for Notary Commission...</option><option>Virginia</option><option>Texas</option><option>Florida</option></select>
+    <button onclick="showToast('Connecting to commissioned notary...')" class="btn btn-primary"><i class="fas fa-video"></i> Connect to Notary</button>
+  </div>
+</div>
+
+<div id="view-transcribe" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-emerald"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-closed-captioning"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>AI Transcribe</h2><p>Real-time transcription in 50+ languages. Export certified transcripts instantly.</p></div>
+  </div>
+  <div class="info-card">
+    <div class="flex justify-between items-center mb-3"><span class="text-sm font-bold text-emerald-400"><i class="fas fa-circle text-xs animate-pulse"></i> LIVE TRANSCRIPTION</span><select class="input" style="width:auto;margin:0;padding:8px 12px;font-size:12px"><option>English</option><option>Spanish</option><option>French</option><option>Chinese (Simplified)</option><option>Arabic</option><option>Russian</option><option>Tagalog</option><option>Vietnamese</option><option>German</option><option>Hindi</option><option>+ 40 More Languages</option></select></div>
+    <div class="transcript-box" style="background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px;height:200px;overflow-y:auto;font-family:monospace;font-size:13px;color:#94a3b8">
+      <div class="mb-2"><span class="text-blue-400 font-bold">HON. MARTINEZ:</span> This court is now in session. Please state your name for the record.</div>
+      <div class="mb-2"><span class="text-amber-400 font-bold">DEFENDANT:</span> John Dalton, your Honor.</div>
+      <div class="mb-2"><span class="text-blue-400 font-bold">HON. MARTINEZ:</span> Thank you, Mr. Dalton. The court acknowledges your remote appearance via VideoCourts™.</div>
+    </div>
+    <button onclick="showToast('Transcript exported and SHA-256 hashed.')" class="btn btn-primary mt-3"><i class="fas fa-download"></i> Export Certified Transcript</button>
+  </div>
+</div>
+
+<div id="view-mock" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-purple"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-scale-balanced"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Mock Trial Lab</h2><p>Practice courtroom arguments with AI Judge feedback before your real hearing.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Practice Courtroom Arguments with AI Judge Feedback</h3>
+    <p class="mb-4">Simulate your hearing before stepping into the virtual courtroom. The Planetary Agents (AI Judges) will evaluate your arguments, pacing, and adherence to courtroom etiquette.</p>
+    <div class="card" style="background:rgba(139,92,246,.1);border-color:#8b5cf6;padding:14px;margin-bottom:16px"><h4 class="font-bold text-purple-400 text-sm mb-2">Active Scenario: Motion to Dismiss</h4><p class="text-xs text-slate-300">You are the defense attorney. Present your opening statement regarding lack of jurisdiction.</p></div>
+    <textarea class="input" rows="4" placeholder="Type or speak your opening statement here..."></textarea>
+    <button onclick="showToast('AI Judge is analyzing your argument...')" class="btn btn-purple"><i class="fas fa-robot"></i> Submit to AI Judge for Feedback</button>
+  </div>
+</div>
+
+<div id="view-courtcall" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-headset"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>CourtCall Remote Links</h2><p>Industry-leading remote legal collaboration across the US, Canada, and Worldwide.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>CourtCall Remote Legal Collaboration</h3>
+    <p>CourtCall is an industry leader in providing supported Remote Legal Collaboration services throughout the United States, Canada and Worldwide. Designed by attorneys, our Remote Appearance Platform combines the latest technologies with exceptional customer service, creating the ideal remote Court Appearance for Judges, Court Staff, attorneys and others.</p>
+    <button onclick="openExternal('https://courtcall.com/','CourtCall')" class="btn btn-primary mt-4"><i class="fas fa-external-link-alt"></i> Access CourtCall Portal</button>
+  </div>
+</div>
+
+<div id="view-legalshield" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-legalshield"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-shield-halved"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>LegalShield Network</h2><p>Get the protection you deserve. Sign up with LegalShield today.</p></div>
+  </div>
+  <div class="info-card" style="border-color:#0056b3">
+    <h3 class="font-bold text-lg mb-2 text-center" style="color:#00a8e8">Everyone Deserves Legal Protection</h3>
+    <p class="text-sm text-slate-300 text-center mb-4">A LegalShield Personal Plan allows you and your family access to legal consultation and support on an unlimited number of legal matters – for a fraction of traditional law firm hourly rates.</p>
+    <button onclick="openExternal('https://www.legalshield.com/','LegalShield')" class="btn btn-legalshield"><i class="fas fa-external-link-alt"></i> Sign Up with LegalShield</button>
+  </div>
+  <div class="info-card">
+    <h3>Give $25, Get $25 Promo</h3>
+    <p>Sharing LegalShield is easy! Here's how:</p>
+    <ul class="list-disc pl-5 text-sm text-slate-400 space-y-1 mt-2">
+      <li>Share with your friends via email, Messenger, or WhatsApp.</li>
+      <li>You'll receive a $25 prepaid Visa gift card!</li>
+      <li>They'll receive a $25 prepaid Visa gift card!</li>
+      <li class="text-xs mt-2">*Participants must sign up and remain a member for 3 months. Advocate must remain a member for either party to be eligible for rewards.</li>
+    </ul>
+    <button onclick="showToast('Opening sharing options...')" class="btn btn-legalshield mt-4"><i class="fas fa-share-alt"></i> Share & Earn $25</button>
+  </div>
+</div>
+
+<div id="view-reporting" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-red"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-file-alt"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Court Reporting Services</h2><p>Accurate, timely court reporting for all your legal needs.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Welcome to VideoCourts™ Court Reporting</h3>
+    <p>We provide accurate and timely court reporting services for all your legal needs. Our team of experienced reporters is dedicated to delivering high-quality transcripts with exceptional attention to detail.</p>
+    <div class="btn-row mt-4"><button onclick="showToast('Opening scheduling portal...')" class="btn btn-primary"><i class="fas fa-calendar-plus"></i> Schedule Deposition</button><button onclick="showToast('Downloading Quick Reference Guide...')" class="btn btn-secondary"><i class="fas fa-download"></i> Quick Reference Guide</button></div>
+  </div>
+</div>
+
+<div id="view-courtcam" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-red"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-tv"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Watch Court Cam TV</h2><p>Live streams, case archives, and real-time judicial proceedings.</p></div>
+  </div>
+  <div class="card" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:12px;padding:12px;text-align:center;margin-bottom:16px"><span style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px">Sponsored By</span><div class="font-bold text-lg mt-1">LegalShield Network</div></div>
+  <div style="background:#000;border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:14px;position:relative;margin-bottom:16px">
+    <div style="position:absolute;top:12px;left:12px;background:#ef4444;color:white;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;background:white;border-radius:50%;animation:pulse 1.5s infinite"></div> LIVE</div>
+    <div class="text-center"><i class="fas fa-play-circle text-4xl mb-2"></i><p>Live Stream Initializing...</p></div>
+  </div>
+  <button onclick="showToast('Opening full Court Cam Live stream...')" class="btn btn-danger"><i class="fas fa-tv"></i> Watch Court Cam Live</button>
+</div>
+
+<div id="view-lawyers" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-users"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Lawyers Directory</h2><p>Connect with biometrically verified attorneys across all practice areas.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Connect with Verified Attorneys</h3>
+    <p>Search our nationwide directory of licensed attorneys across all practice areas. Every attorney is verified through our biometric identity system.</p>
+    <input type="text" class="input" placeholder="Search by name, practice area, or location...">
+    <select class="input"><option>All Practice Areas</option><option>Criminal Defense</option><option>Family Law</option><option>Immigration</option><option>Civil Rights</option><option>Bankruptcy</option><option>Personal Injury</option></select>
+    <button onclick="showToast('Searching attorney directory...')" class="btn btn-primary"><i class="fas fa-search"></i> Search Attorneys</button>
+  </div>
+</div>
+
+<div id="view-naacp" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-naacp"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-hand-fist"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Civil Rights & Equitable Access</h2><p>In partnership with the NAACP — justice for all Americans.</p></div>
+  </div>
+  <div class="info-card" style="border-color:#d32f2f">
+    <h3 style="color:#ef4444"><i class="fas fa-hand-fist"></i> NAACP Partnership for Justice</h3>
+    <p>VideoCourts™ is committed to equitable access to justice for all Americans. In partnership with civil rights organizations including the NAACP, we ensure that virtual court access does not disproportionately impact marginalized communities.</p>
+    <ul class="list-disc pl-5 text-sm text-slate-400 space-y-1 mt-2">
+      <li><strong>Indigent Fee Waivers:</strong> No one is denied access due to inability to pay.</li>
+      <li><strong>Multi-Language Support:</strong> 50+ languages including Spanish, Mandarin, Arabic, Vietnamese.</li>
+      <li><strong>ADA Compliance:</strong> Full accessibility for users with disabilities.</li>
+      <li><strong>Rural Access:</strong> Low-bandwidth mode for communities with limited internet.</li>
+      <li><strong>Civil Rights Monitoring:</strong> Independent oversight to prevent discriminatory outcomes.</li>
+    </ul>
+    <button onclick="showToast('Opening Indigent Fee Waiver form...')" class="btn btn-naacp mt-4"><i class="fas fa-hand-holding-heart"></i> Apply for Fee Waiver</button>
+    <button onclick="openExternal('https://naacp.org/','NAACP')" class="btn btn-secondary mt-2"><i class="fas fa-hand-fist"></i> NAACP Legal Resources</button>
+  </div>
+</div>
+
+<div id="view-idme" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-idme"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-fingerprint"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>ID.me & Biometrics</h2><p>Verify your identity with state-grade biometric security.</p></div>
+  </div>
+  <div class="info-card card-glow">
+    <h3>VERIFY WITH ID.me TO GAIN ACCESS TO YOUR COURT</h3>
+    <p>Multiple state government agencies have partnered with ID.me to create a highly secure identity verification process that ensures you, and only you, will be able to access your court proceedings.</p>
+    <button onclick="window.open('https://api.id.me/en/session/new', '_blank')" class="btn btn-idme mt-4"><i class="fas fa-fingerprint"></i> Initiate Biometric Enrollment</button>
+  </div>
+  <div class="info-card">
+    <h3>Biometric Technologies</h3>
+    <p>Biometrics are unique physical or behavioral characteristics which can be used to automatically identify individuals. Biometric technologies capture, process and measure these characteristics electronically and compare them against existing records to create a highly accurate identity management capability.</p>
+    <p class="mt-2">Common physical biometric indicators include fingerprints, faces, irises, voices, and DNA. Behavioral indicators include patterns in the way an individual walks, gestures, or types.</p>
+  </div>
+  <div class="consent-box" style="background:rgba(59,130,246,.1);border:1px solid #3b82f6;border-radius:8px;padding:12px;margin:12px 0"><label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#e2e8f0;cursor:pointer"><input type="checkbox"><span>I consent to the collection and processing of my biometric data (facial geometry, fingerprint, voice) for identity verification purposes in accordance with VideoCourts™ Biometric Privacy Policy.</span></label></div>
+  <div class="consent-box" style="background:rgba(59,130,246,.1);border:1px solid #3b82f6;border-radius:8px;padding:12px;margin:12px 0"><label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#e2e8f0;cursor:pointer"><input type="checkbox"><span>I consent to the recording of all court sessions via TotalRecall/LEGyC chain for chain-of-custody integrity.</span></label></div>
+</div>
+
+<div id="view-calendar" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-calendar-alt"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Calendar & SMS Alerts</h2><p>Never miss a hearing. Get SMS and email reminders automatically.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Upcoming Hearings</h3>
+    <div class="card mt-3" style="background:#0f172a"><div class="flex justify-between items-center"><span class="font-bold text-blue-400">CR-2024-1087</span><span class="text-xs bg-emerald-900 text-emerald-400 px-2 py-1 rounded">Confirmed</span></div><p class="text-sm mt-1">State v. Dalton · Arraignment</p><p class="text-xs text-slate-400 mt-1"><i class="fas fa-clock"></i> Tomorrow, 09:00 AM</p></div>
+    <label class="text-xs text-slate-400 font-bold uppercase mt-4 block">Mobile Number for SMS Alerts</label>
+    <input type="tel" class="input" placeholder="(555) 123-4567">
+    <label class="text-xs text-slate-400 font-bold uppercase">Email Address</label>
+    <input type="email" class="input" placeholder="you@example.com">
+    <button onclick="showToast('SMS & Email reminders enabled.')" class="btn btn-success"><i class="fas fa-bell"></i> Save Communication Preferences</button>
+  </div>
+</div>
+
+<div id="view-vocab" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-purple"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-book"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Court Room Vocabulary</h2><p>Definitions and terms every litigant should know.</p></div>
+  </div>
+  <div class="info-card">
+    <div class="vocab-item" style="background:#111827;border-left:3px solid #3b82f6;padding:10px 14px;margin-bottom:8px;border-radius:8px"><strong style="color:#3b82f6">Arbitration</strong><p style="font-size:12px;color:#94a3b8;margin-top:4px">A method of resolving disputes outside of court.</p></div>
+    <div class="vocab-item" style="background:#111827;border-left:3px solid #3b82f6;padding:10px 14px;margin-bottom:8px;border-radius:8px"><strong style="color:#3b82f6">Bankruptcy</strong><p style="font-size:12px;color:#94a3b8;margin-top:4px">Legal proceeding involving a person or business unable to repay outstanding debts.</p></div>
+    <div class="vocab-item" style="background:#111827;border-left:3px solid #3b82f6;padding:10px 14px;margin-bottom:8px;border-radius:8px"><strong style="color:#3b82f6">Civil Rights</strong><p style="font-size:12px;color:#94a3b8;margin-top:4px">Rights of citizens to political and social freedom and equality.</p></div>
+    <div class="vocab-item" style="background:#111827;border-left:3px solid #3b82f6;padding:10px 14px;margin-bottom:8px;border-radius:8px"><strong style="color:#3b82f6">Habeas Corpus</strong><p style="font-size:12px;color:#94a3b8;margin-top:4px">A writ requiring a person under arrest to be brought before a judge.</p></div>
+    <div class="vocab-item" style="background:#111827;border-left:3px solid #3b82f6;padding:10px 14px;margin-bottom:8px;border-radius:8px"><strong style="color:#3b82f6">Jurisdiction</strong><p style="font-size:12px;color:#94a3b8;margin-top:4px">The official power to make legal decisions and judgments.</p></div>
+    <div class="vocab-item" style="background:#111827;border-left:3px solid #3b82f6;padding:10px 14px;margin-bottom:8px;border-radius:8px"><strong style="color:#3b82f6">Multidistrict Litigation</strong><p style="font-size:12px;color:#94a3b8;margin-top:4px">Procedural device for federal civil cases pending in different districts.</p></div>
+  </div>
+</div>
+
+<div id="view-courts" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-landmark"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>United States Courts Directory</h2><p>All 50 states, DC, and territories — fully integrated into VideoCourts.</p></div>
+  </div>
+  <div class="info-card">
+    <h4 class="font-bold text-blue-400 mb-2">Federal Courts</h4>
+    <p class="text-sm text-slate-300 mb-4">Supreme Court of the United States, 13 Courts of Appeals (1st-11th, DC, Federal), 94 District Courts, Court of International Trade, Court of Federal Claims, Tax Court, Bankruptcy Courts.</p>
+    <h4 class="font-bold text-blue-400 mb-2">State Courts (Representative)</h4>
+    <p class="text-xs text-slate-400"><strong>AL:</strong> Supreme Court, Court of Civil/Criminal Appeals, Circuit, District, Municipal, Probate.<br><strong>CA:</strong> Supreme Court, Courts of Appeal (6 districts), Superior Courts (58 counties).<br><strong>FL:</strong> Supreme Court, District Courts of Appeal (5), Circuit (20), County (67).<br><strong>NY:</strong> Court of Appeals, Supreme Court Appellate Division (4), Supreme Court (13), County, Surrogate's, Family, Court of Claims.<br><strong>NC:</strong> Supreme Court, Court of Appeals, Superior (48), District (41).<br><strong>TX:</strong> Supreme Court (Civil), Court of Criminal Appeals, Courts of Appeals (14), District (420), County, Justice, Municipal.<br><em>(All 50 States, DC, and Territories including PR, Guam, VI, Northern Mariana Islands, American Samoa are fully integrated into the VideoCourts routing engine.)</em></p>
+  </div>
+</div>
+
+<div id="view-watch-learn" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-play-circle"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Watch & Learn</h2><p>Video tutorials, webinars, and training resources for all users.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>VideoCourts™ Tutorial Library</h3>
+    <p>Step-by-step video guides to help you navigate the platform, understand virtual court procedures, and make the most of your remote hearing experience.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+      <div class="tutorial-card" style="background:#111827;border:1px solid #1e293b;border-radius:12px;padding:14px;cursor:pointer;transition:all .2s" onclick="showToast('Loading: Getting Started with VideoCourts...')"><div class="play-icon" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;margin-bottom:10px"><i class="fas fa-play"></i></div><h4 class="font-bold text-sm mb-1">Getting Started</h4><p class="text-xs text-slate-400">5 min · Beginner</p></div>
+      <div class="tutorial-card" style="background:#111827;border:1px solid #1e293b;border-radius:12px;padding:14px;cursor:pointer;transition:all .2s" onclick="showToast('Loading: How to Request a Virtual Appearance...')"><div class="play-icon" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;margin-bottom:10px"><i class="fas fa-play"></i></div><h4 class="font-bold text-sm mb-1">Requesting a Virtual Appearance</h4><p class="text-xs text-slate-400">4 min · Beginner</p></div>
+      <div class="tutorial-card" style="background:#111827;border:1px solid #1e293b;border-radius:12px;padding:14px;cursor:pointer;transition:all .2s" onclick="showToast('Loading: Using the Live Courtroom...')"><div class="play-icon" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;margin-bottom:10px"><i class="fas fa-play"></i></div><h4 class="font-bold text-sm mb-1">Using the Live Courtroom</h4><p class="text-xs text-slate-400">8 min · Intermediate</p></div>
+      <div class="tutorial-card" style="background:#111827;border:1px solid #1e293b;border-radius:12px;padding:14px;cursor:pointer;transition:all .2s" onclick="showToast('Loading: Administrative Onboarding...')"><div class="play-icon" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;margin-bottom:10px"><i class="fas fa-play"></i></div><h4 class="font-bold text-sm mb-1">Administrative Onboarding</h4><p class="text-xs text-slate-400">12 min · Court Admin</p></div>
+    </div>
+  </div>
+</div>
+
+<div id="view-onboarding" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-emerald"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-graduation-cap"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Administrative Onboarding & Training</h2><p>Comprehensive training for court administrators, clerks, and judicial staff.</p></div>
+  </div>
+  <div class="info-card">
+    <h3>Court Administrator Training Portal</h3>
+    <p>VideoCourts™ provides comprehensive onboarding and training for court administrators, clerks, judges, and support staff.</p>
+    <div class="card mt-4" style="background:rgba(16,185,129,0.1);border-color:#10b981;padding:14px"><h4 class="font-bold text-emerald-400 text-sm mb-2">Training Modules</h4><ul class="text-xs text-slate-300 space-y-1 list-disc pl-4"><li>Platform Overview & Navigation (30 min)</li><li>Case Management & Docketing (45 min)</li><li>Virtual Hearing Administration (60 min)</li><li>Biometric Verification & Security (30 min)</li><li>E-Filing & Document Management (45 min)</li><li>Reporting & Analytics (30 min)</li><li>Troubleshooting & Support (20 min)</li></ul></div>
+    <button onclick="showToast('Starting Administrator Training Module...')" class="btn btn-success mt-4"><i class="fas fa-play"></i> Begin Training</button>
+    <button onclick="showToast('Downloading Training Materials PDF...')" class="btn btn-secondary"><i class="fas fa-download"></i> Download Materials</button>
+  </div>
+</div>
+
+<div id="view-executives" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-indigo"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-user-tie"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Executive Leadership</h2><p>The visionaries building the future of virtual justice.</p></div>
+  </div>
+  <div class="info-card"><h3>About Our Leadership</h3><p>VideoCourts™ is led by a team of legal technology veterans, judicial reform advocates, and enterprise software architects.</p></div>
+  <div class="section-title"><i class="fas fa-users"></i> Executive Team</div>
+  <div class="exec-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div class="exec-card" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;text-align:center;transition:all .2s"><div class="exec-avatar" style="width:80px;height:80px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.3);background:linear-gradient(135deg,#3b82f6,#06b6d4)">CG</div><div class="exec-name" style="font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:4px">CyGeL White</div><div class="exec-title" style="font-size:12px;color:#3b82f6;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Founder & CEO</div><div class="exec-bio" style="font-size:11px;color:#94a3b8;line-height:1.4">Visionary founder of the VideoCourts platform. Pioneer in virtual judicial infrastructure and AI-powered legal access.</div></div>
+    <div class="exec-card" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;text-align:center;transition:all .2s"><div class="exec-avatar" style="width:80px;height:80px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.3);background:linear-gradient(135deg,#8b5cf6,#ec4899)">QW</div><div class="exec-name" style="font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:4px">Qwen3.7</div><div class="exec-title" style="font-size:12px;color:#3b82f6;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">DevOps GuruCTO</div><div class="exec-bio" style="font-size:11px;color:#94a3b8;line-height:1.4">Leads platform architecture, Constellation25 integration, and enterprise-grade security infrastructure.</div></div>
+    <div class="exec-card" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;text-align:center;transition:all .2s"><div class="exec-avatar" style="width:80px;height:80px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.3);background:linear-gradient(135deg,#10b981,#059669)">EM</div><div class="exec-name" style="font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:4px">Earth </div><div class="exec-title" style="font-size:12px;color:#3b82f6;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Chief Operations Officer</div><div class="exec-bio" style="font-size:11px;color:#94a3b8;line-height:1.4">Oversees nationwide deployment, DevOps, build orchestration, and unified auto-updater paradigm.</div></div>
+    <div class="exec-card" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;text-align:center;transition:all .2s"><div class="exec-avatar" style="width:80px;height:80px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.3);background:linear-gradient(135deg,#dc2626,#f97316)">MR</div><div class="exec-name" style="font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:4px">Mars ♂️</div><div class="exec-title" style="font-size:12px;color:#3b82f6;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Chief Security Officer</div><div class="exec-bio" style="font-size:11px;color:#94a3b8;line-height:1.4">Leads cybersecurity, offensive ops, penetration testing, and Bugcrowd swarm coordination.</div></div>
+  </div>
+</div>
+
+<div id="view-investors" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-gold"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-chart-line"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Investment Relations & Sponsorship</h2><p>Partner with the future of virtual justice.</p></div>
+  </div>
+  <div class="info-card"><h3>Investment Overview</h3><p>VideoCourts™ is seeking strategic investment partners to accelerate our nationwide rollout across all 50 states. With proven pilot success in North Carolina and a clear path to profitability through our $1.99/$19.99 micro-transaction model, we represent a unique opportunity in the $400B+ legal technology market.</p></div>
+  <div class="section-title"><i class="fas fa-chart-bar"></i> Key Metrics</div>
+  <div class="grid grid-cols-2 gap-3 mb-4">
+    <div class="investor-stat" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:16px;padding:20px;text-align:center"><div class="stat-value" style="font-size:32px;font-weight:800;background:linear-gradient(135deg,#3b82f6,#06b6d4);-webkit-background-clip:text;color:transparent">$400B+</div><div class="stat-label" style="font-size:12px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px">Legal Tech Market</div></div>
+    <div class="investor-stat" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:16px;padding:20px;text-align:center"><div class="stat-value" style="font-size:32px;font-weight:800;background:linear-gradient(135deg,#3b82f6,#06b6d4);-webkit-background-clip:text;color:transparent">50</div><div class="stat-label" style="font-size:12px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px">States Target</div></div>
+    <div class="investor-stat" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:16px;padding:20px;text-align:center"><div class="stat-value" style="font-size:32px;font-weight:800;background:linear-gradient(135deg,#3b82f6,#06b6d4);-webkit-background-clip:text;color:transparent">$1.99</div><div class="stat-label" style="font-size:12px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px">Entry Fee</div></div>
+    <div class="investor-stat" style="background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:16px;padding:20px;text-align:center"><div class="stat-value" style="font-size:32px;font-weight:800;background:linear-gradient(135deg,#3b82f6,#06b6d4);-webkit-background-clip:text;color:transparent">$19.99</div><div class="stat-label" style="font-size:12px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px">Per-Case Revenue</div></div>
+  </div>
+  <div class="section-title"><i class="fas fa-handshake"></i> Sponsorship Opportunities</div>
+  <div class="sponsor-tier featured" style="background:#111827;border:2px solid #fbbf24;border-radius:16px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 0 30px rgba(251,191,36,0.15)"><div class="tier-badge" style="position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;background:#fbbf24;color:#000">PLATINUM</div><h3 style="color:#fbbf24;font-size:20px;font-weight:800;margin-bottom:4px">Platinum Partner</h3><div class="price" style="font-size:32px;font-weight:800;margin:12px 0">$250,000<span style="font-size:14px;color:#94a3b8;font-weight:400">/year</span></div><ul style="list-style:none;margin:16px 0"><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Homepage hero banner placement</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Court Cam TV exclusive sponsorship</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Dedicated integration API access</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Co-branded marketing campaigns</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Executive advisory board seat</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Priority feature development input</li></ul><button onclick="showToast('Platinum sponsorship inquiry submitted.')" class="btn btn-gold"><i class="fas fa-crown"></i> Inquire About Platinum</button></div>
+  <div class="sponsor-tier" style="background:#111827;border:2px solid #1e293b;border-radius:16px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden"><div class="tier-badge" style="position:absolute;top:12px;right:12px;font-size:10px;font-weight:800;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;background:#94a3b8;color:#000">GOLD</div><h3 style="color:#e5e7eb;font-size:20px;font-weight:800;margin-bottom:4px">Gold Partner</h3><div class="price" style="font-size:32px;font-weight:800;margin:12px 0">$100,000<span style="font-size:14px;color:#94a3b8;font-weight:400">/year</span></div><ul style="list-style:none;margin:16px 0"><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Module-level banner placement</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Court Cam TV rotating sponsorship</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Newsletter feature (4x/year)</li><li style="padding:8px 0;font-size:13px;color:#cbd5e1;display:flex;align-items:center;gap:8px"><i class="fas fa-check" style="color:#10b981;font-size:12px"></i> Conference speaking opportunities</li></ul><button onclick="showToast('Gold sponsorship inquiry submitted.')" class="btn btn-secondary"><i class="fas fa-medal"></i> Inquire About Gold</button></div>
+</div>
+
+<div id="view-pilots" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-teal"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-flask"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Pilot Program Details & Registration</h2><p>Join our nationwide virtual court pilot initiatives.</p></div>
+  </div>
+  <div class="info-card"><h3>About Our Pilot Programs</h3><p>VideoCourts™ is actively deploying pilot programs in partnership with state and federal judicial systems. These pilots validate our technology, refine user experience, and establish the regulatory framework for nationwide adoption.</p></div>
+  <div class="section-title"><i class="fas fa-map-marked-alt"></i> Active Pilot Programs</div>
+  <div class="pilot-card active" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;margin-bottom:14px;border-left:4px solid #10b981"><span class="pilot-status active" style="display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:10px;background:rgba(16,185,129,0.15);color:#10b981">● ACTIVE</span><h4 class="font-bold text-white mb-2">North Carolina eCourts Integration Pilot</h4><p class="text-sm text-slate-400 mb-3">Partnership with NC Judicial Branch to integrate VideoCourts with the state's Odyssey-based eCourts system. Covering 100 counties with focus on civil and traffic cases.</p><div class="grid grid-cols-3 gap-2 text-xs"><div><span class="text-slate-500">Start:</span> <span class="text-white">Jan 2026</span></div><div><span class="text-slate-500">Duration:</span> <span class="text-white">18 months</span></div><div><span class="text-slate-500">Counties:</span> <span class="text-white">100</span></div></div></div>
+  <div class="pilot-card active" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;margin-bottom:14px;border-left:4px solid #10b981"><span class="pilot-status active" style="display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:10px;background:rgba(16,185,129,0.15);color:#10b981">● ACTIVE</span><h4 class="font-bold text-white mb-2">California AB 3013 Remote Hearing Pilot</h4><p class="text-sm text-slate-400 mb-3">Implementation of California's remote hearing mandate across Los Angeles, San Bernardino, and San Diego superior courts. Focus on family law and small claims.</p><div class="grid grid-cols-3 gap-2 text-xs"><div><span class="text-slate-500">Start:</span> <span class="text-white">Mar 2026</span></div><div><span class="text-slate-500">Duration:</span> <span class="text-white">24 months</span></div><div><span class="text-slate-500">Courts:</span> <span class="text-white">3</span></div></div></div>
+  <div class="pilot-card active" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;margin-bottom:14px;border-left:4px solid #10b981"><span class="pilot-status active" style="display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:10px;background:rgba(16,185,129,0.15);color:#10b981">● ACTIVE</span><h4 class="font-bold text-white mb-2">Federal Audio Streaming Pilot Extension</h4><p class="text-sm text-slate-400 mb-3">Continuation of the Judicial Conference's audio streaming pilot with VideoCourts providing the secure infrastructure for 25 federal district courts.</p><div class="grid grid-cols-3 gap-2 text-xs"><div><span class="text-slate-500">Start:</span> <span class="text-white">Apr 2026</span></div><div><span class="text-slate-500">Duration:</span> <span class="text-white">12 months</span></div><div><span class="text-slate-500">Courts:</span> <span class="text-white">25</span></div></div></div>
+  <div class="pilot-card pending" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;margin-bottom:14px;border-left:4px solid #f59e0b"><span class="pilot-status pending" style="display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:10px;background:rgba(245,158,11,0.15);color:#f59e0b">◐ ENROLLING</span><h4 class="font-bold text-white mb-2">Texas Virtual Court Expansion Pilot</h4><p class="text-sm text-slate-400 mb-3">Rolling out VideoCourts across 15 Texas counties with focus on rural access and limited-bandwidth optimization for underserved communities.</p><div class="grid grid-cols-3 gap-2 text-xs"><div><span class="text-slate-500">Start:</span> <span class="text-white">Q4 2026</span></div><div><span class="text-slate-500">Duration:</span> <span class="text-white">18 months</span></div><div><span class="text-slate-500">Counties:</span> <span class="text-white">15</span></div></div></div>
+  <div class="pilot-card" style="background:#111827;border:1px solid #1e293b;border-radius:16px;padding:18px;margin-bottom:14px;border-left:4px solid #3b82f6"><span class="pilot-status upcoming" style="display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:10px;background:rgba(59,130,246,0.15);color:#3b82f6">○ UPCOMING</span><h4 class="font-bold text-white mb-2">Rural Justice Access Initiative</h4><p class="text-sm text-slate-400 mb-3">Targeted deployment in 50 rural counties across 10 states with limited courthouse access. Includes satellite internet integration and low-bandwidth mode.</p><div class="grid grid-cols-3 gap-2 text-xs"><div><span class="text-slate-500">Start:</span> <span class="text-white">Q2 2027</span></div><div><span class="text-slate-500">Duration:</span> <span class="text-white">36 months</span></div><div><span class="text-slate-500">Counties:</span> <span class="text-white">50</span></div></div></div>
+  <div class="section-title"><i class="fas fa-clipboard-list"></i> Pilot Registration Form</div>
+  <div class="info-card">
+    <p class="mb-4">Are you a court administrator, judge, or judicial technology officer interested in participating in a VideoCourts™ pilot program?</p>
+    <label class="text-xs text-slate-400 font-bold uppercase">Court / Organization Name</label><input type="text" class="input" placeholder="e.g., 3rd Judicial District Court">
+    <label class="text-xs text-slate-400 font-bold uppercase">Jurisdiction / State</label><select class="input"><option>Select State...</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option><option>District of Columbia</option><option>Federal</option></select>
+    <label class="text-xs text-slate-400 font-bold uppercase">Contact Name</label><input type="text" class="input" placeholder="Full Name">
+    <label class="text-xs text-slate-400 font-bold uppercase">Email Address</label><input type="email" class="input" placeholder="official@court.gov">
+    <button onclick="showToast('Pilot registration submitted successfully.')" class="btn btn-success"><i class="fas fa-paper-plane"></i> Submit Pilot Registration</button>
+  </div>
+</div>
+
+<div id="view-about" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-bg"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-info-circle"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>About VideoCourts</h2><p>The unified, nationwide platform for virtual hearings and seamless e-filing.</p></div>
+  </div>
+  <div class="info-card"><h3>Welcome to your Hybrid and Virtual Courts</h3><p>As courtrooms around the country embrace a new hybrid reality, judicial leaders are tasked with understanding how to use technology to improve experiences and increase access to justice. This guide explores the future of courts — offering industry insights and tips on how to create a courtroom designed for tomorrow.</p><p class="mt-3">VideoCourts™ is the unified, nationwide platform for virtual hearings and seamless e-filing across all 50 states. Pioneered in North Carolina, scaling nationwide.</p></div>
+</div>
+
+<div id="view-support" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-emerald"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-headset"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Support, FAQs & Contact</h2><p>We're here 24/7 to help you navigate the platform.</p></div>
+  </div>
+  <div class="info-card"><h3>Pilot Programs Introduction</h3><p>VideoCourts actively participates in and monitors state and federal virtual court pilot programs to ensure our platform remains at the forefront of judicial technology and compliance.</p></div>
+  <div class="info-card">
+    <h3>Frequently Asked Questions</h3>
+    <details class="mb-2" style="border-bottom:1px solid #1e293b;padding-bottom:8px"><summary class="cursor-pointer font-semibold text-sm text-white">How do I request a virtual appearance?</summary><p class="text-sm text-slate-400 mt-2">Use the flashing banner on the Home screen. Pay the $1.99 processing fee. Upon court approval, the $19.99 platform access fee applies.</p></details>
+    <details class="mb-2" style="border-bottom:1px solid #1e293b;padding-bottom:8px"><summary class="cursor-pointer font-semibold text-sm text-white">Can I get the platform for free?</summary><p class="text-sm text-slate-400 mt-2">Yes. You can download and submit the Indigent Fee Waiver form from the Court Forms section or Civil Rights section for Clerk of Court approval.</p></details>
+    <details class="mb-2" style="border-bottom:1px solid #1e293b;padding-bottom:8px"><summary class="cursor-pointer font-semibold text-sm text-white">Is my data secure?</summary><p class="text-sm text-slate-400 mt-2">Yes. We use ID.me biometric verification, Total Recall SHA-256 immutable ledger hashing, and end-to-end encryption compliant with CJIS and FedRAMP standards.</p></details>
+  </div>
+  <div class="info-card">
+    <h3>Contact Us</h3>
+    <p class="text-sm mb-2"><i class="fas fa-phone"></i> 1-888-VID-COURTS</p>
+    <p class="text-sm mb-2"><i class="fas fa-envelope"></i> support@videocourts.com</p>
+    <p class="text-sm mb-4"><i class="fas fa-clock"></i> Hours: Mon-Fri 8am - 8pm EST</p>
+    <p class="text-sm mb-4"><i class="fas fa-map-marker-alt"></i> 1 Virtual Way, USA</p>
+    <div class="btn-row"><button onclick="showView('view-terms')" class="btn btn-secondary text-sm"><i class="fas fa-file-contract"></i> Terms of Service</button><button onclick="showView('view-privacy')" class="btn btn-secondary text-sm"><i class="fas fa-user-shield"></i> Privacy Policy</button></div>
+  </div>
+</div>
+
+<div id="view-terms" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-indigo"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-file-contract"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Terms & Conditions</h2><p>Last Updated: October 19, 2026</p></div>
+  </div>
+  <div class="legal-doc" style="background:#fff;color:#111827;border-radius:12px;padding:24px;font-family:Georgia,'Times New Roman',serif;line-height:1.7">
+    <h2 style="font-size:22px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #1e293b">VideoCourts™ Terms & Conditions of Service</h2>
+    <p style="font-size:14px;margin-bottom:12px;color:#374151"><em>Effective Date: October 19, 2026</em></p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">1. Acceptance of Terms</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">By accessing or using the VideoCourts™ platform ("Platform"), you ("User," "you," or "your") agree to be bound by these Terms & Conditions ("Terms"). If you do not agree to these Terms, you may not access or use the Platform.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">2. Description of Service</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">VideoCourts™ is an AI-as-a-Service (AIaaS) platform that provides virtual court appearance request processing, electronic filing (e-File) integration, secure video hearing facilitation, biometric identity verification, document management, and related judicial technology services.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">3. Fees & Payment</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">The Platform operates on a two-tier fee structure: <strong>$1.99 Processing Fee</strong> charged upfront when submitting a virtual appearance request, and <strong>$19.99 Platform Access Fee</strong> charged per case (or annual license) ONLY upon court approval. All fees are non-refundable unless otherwise required by law.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">4. AI Legal Navigator Disclaimer</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">The Alfai AI Legal Navigator ("AI Agent") is a drafting and research aid only. <strong>The AI Agent cannot and does not provide real legal advice.</strong> No attorney-client relationship is formed by your use of the AI Agent. Always consult a licensed attorney for legal matters.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">5. Governing Law</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">These Terms shall be governed and construed in accordance with the laws of the State of North Carolina, United States, without regard to its conflict of law provisions.</p>
+    <p style="margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280">© 2026 VideoCourts™ Inc. All rights reserved. · 1 Virtual Way, USA</p>
+  </div>
+</div>
+
+<div id="view-privacy" class="view">
+  <button class="back-btn" onclick="showView('view-home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+  <div class="module-header-banner">
+    <div class="banner-bg grad-purple"></div><div class="banner-overlay"></div>
+    <div class="banner-icon"><i class="fas fa-user-shield"></i></div>
+    <button class="close-x" onclick="showView('view-home')" title="Close">×</button>
+    <div class="banner-content"><h2>Privacy Policy</h2><p>Last Updated: October 19, 2026</p></div>
+  </div>
+  <div class="legal-doc" style="background:#fff;color:#111827;border-radius:12px;padding:24px;font-family:Georgia,'Times New Roman',serif;line-height:1.7">
+    <h2 style="font-size:22px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #1e293b">VideoCourts™ Privacy Policy</h2>
+    <p style="font-size:14px;margin-bottom:12px;color:#374151"><em>Effective Date: October 19, 2026</em></p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">1. Introduction</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">VideoCourts™ Inc. ("Company," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform, website, and services.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">2. Information We Collect</h3><p style="font-size:14px;margin-bottom:12px;color:#374151"><strong>Personal Information:</strong> Name, email address, phone number, mailing address, date of birth, government-issued ID numbers.</p><p style="font-size:14px;margin-bottom:12px;color:#374151"><strong>Biometric Information:</strong> Facial geometry, fingerprints, voice patterns, iris scans, and behavioral biometrics collected through ID.me verification.</p><p style="font-size:14px;margin-bottom:12px;color:#374151"><strong>Case Information:</strong> Case numbers, court documents, filing history, hearing records, and judicial proceedings data.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">3. Biometric Data Protection</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">Biometric data is collected solely for identity verification purposes and is processed in accordance with: Illinois Biometric Information Privacy Act (BIPA); Texas Capture or Use of Biometric Identifier Act (CUBI); Washington Biometric Privacy Act; and NIST 800-63-3 Identity Assurance Level 2 (IAL2) standards.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">4. Data Security</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">We implement industry-standard security measures including: end-to-end encryption for all video sessions and document transfers; WORM (Write Once, Read Many) storage for evidence and court records; SHA-256 immutable ledger hashing via TotalRecall/LEGyC chain; CJIS (Criminal Justice Information Services) compliance; FedRAMP Moderate authorization standards; and SOC 2 Type II certified infrastructure.</p>
+    <h3 style="font-size:16px;font-weight:700;margin-top:20px;margin-bottom:8px;color:#1e293b">5. Contact Us</h3><p style="font-size:14px;margin-bottom:12px;color:#374151">For privacy-related questions or concerns: VideoCourts™ Inc. · Privacy Officer · Email: privacy@videocourts.com · Phone: 1-888-VID-COURTS · Address: 1 Virtual Way, USA</p>
+    <p style="margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280">© 2026 VideoCourts™ Inc. All rights reserved.</p>
+  </div>
+</div>
+
+<div class="floating-ai" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
+<div class="chat-panel" id="chat-panel">
+  <div class="p-4 border-b border-slate-700 flex justify-between items-center">
+    <div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div><span class="font-semibold text-sm">Alfai Legal Navigator (Grok AI)</span></div>
+    <div class="flex items-center gap-2"><button id="speaker-toggle" onclick="toggleSpeaker()" class="speaker-btn" title="Toggle voice output"><i class="fas fa-volume-up"></i></button><button onclick="toggleChat()" class="text-slate-400 text-xl">×</button></div>
+  </div>
+  <div class="p-3"><div class="ai-disclaimer"><i class="fas fa-exclamation-triangle mt-0.5"></i><span><strong>AI Disclaimer:</strong> This AI agent cannot provide real legal advice. It is a drafting and research aid only. Always consult a licensed attorney for legal matters.</span></div></div>
+  <div id="chat-body" class="flex-1 p-4 overflow-y-auto" style="max-height:300px">
+    <div class="chat-bubble bot">Welcome to VideoCourts™. I am Alfai, your AI Legal Navigator powered by Grok. I can help you e-File documents, request virtual hearings, navigate arbitration, or access mediation services. How can I assist you today? <em>(Tap the mic to speak to me)</em></div>
+    <div class="flex flex-wrap gap-2 mt-2">
+      <button onclick="aiQuickAction('I need to e-File a document')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700">e-File a Document</button>
+      <button onclick="aiQuickAction('Request a Virtual Hearing')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700">Request Virtual Hearing</button>
+      <button onclick="aiQuickAction('Check Case Status')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700">Check Case Status</button>
+      <button onclick="aiQuickAction('Request Arbitration')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700">Arbitration</button>
+      <button onclick="aiQuickAction('Schedule Mediation')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700">Mediation</button>
+    </div>
+  </div>
+  <div class="p-3 border-t border-slate-700">
+    <div class="flex gap-2 items-center">
+      <input id="chat-input" type="text" placeholder="Ask Alfai..." class="flex-1 bg-slate-800 rounded-lg px-3 py-2 text-sm outline-none border border-slate-700 focus:border-blue-500" onkeydown="if(event.key==='Enter'){event.preventDefault();sendChatMessage();}">
+      <button id="mic-btn" onclick="toggleMic()" class="mic-btn" title="Tap to speak to Alfai 24/7"><i class="fas fa-microphone"></i></button>
+      <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 rounded-lg"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <div class="mic-helper"><i class="fas fa-microphone"></i> Tap the red mic to speak to Alfai 24/7</div>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <div class="nav-item active" onclick="showView('view-home')"><i class="fas fa-home"></i><span>Home</span></div>
+  <div class="nav-item" onclick="showView('view-courtroom')"><i class="fas fa-video"></i><span>Courtroom</span></div>
+  <div class="nav-item" onclick="showView('view-efile')"><i class="fas fa-file-upload"></i><span>e-File</span></div>
+  <div class="nav-item" onclick="showView('view-idme')"><i class="fas fa-fingerprint"></i><span>ID.me</span></div>
+  <div class="nav-item" onclick="toggleMenu()"><i class="fas fa-bars"></i><span>Menu</span></div>
+</nav>
+
+<script>
+function showView(viewId){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(viewId).classList.add('active');document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));window.scrollTo(0,0)}
+function toggleMenu(){document.getElementById('slide-menu').classList.toggle('open');document.getElementById('menu-overlay').classList.toggle('show')}
+function toggleChat(){document.getElementById('chat-panel').classList.toggle('open')}
+function openExternal(url,title){document.getElementById('external-iframe').src=url;document.getElementById('modal-title').innerText=title;document.getElementById('external-modal').style.display='flex';document.getElementById('slide-menu').classList.remove('open');document.getElementById('menu-overlay').classList.remove('show')}
+function closeExternalModal(){document.getElementById('external-modal').style.display='none';document.getElementById('external-iframe').src=''}
+function openLogin(){document.getElementById('login-modal').classList.add('show')}
+function closeLogin(){document.getElementById('login-modal').classList.remove('show');document.getElementById('login-email').value='';document.getElementById('login-pin').value=''}
+function verifyLogin(){const email=document.getElementById('login-email').value;const pin=document.getElementById('login-pin').value;if(!email||!pin){showToast('Please enter email and 6-digit PIN');return}if(pin.length!==6){showToast('PIN must be 6 digits');return}showToast('✅ Login successful. Welcome back!');closeLogin()}
+let timerRunning=false,timerSeconds=842,timerInterval;
+function toggleTimer(){timerRunning=!timerRunning;const btn=document.getElementById('timer-btn');if(timerRunning){btn.innerHTML='<i class="fas fa-pause"></i> Pause Timer';timerInterval=setInterval(()=>{timerSeconds++;updateTimerDisplay()},1000)}else{btn.innerHTML='<i class="fas fa-play"></i> Start Timer';clearInterval(timerInterval)}}
+function resetTimer(){timerSeconds=0;updateTimerDisplay();if(timerRunning)toggleTimer()}
+function updateTimerDisplay(){const h=String(Math.floor(timerSeconds/3600)).padStart(2,'0');const m=String(Math.floor((timerSeconds%3600)/60)).padStart(2,'0');const s=String(timerSeconds%60).padStart(2,'0');document.getElementById('court-timer').innerText=h+':'+m+':'+s}
+function openBreakout(){const p=document.getElementById('breakout-panel');p.style.display=p.style.display==='none'?'block':'none'}
+function openInvite(){const p=document.getElementById('invite-panel');p.style.display=p.style.display==='none'?'block':'none'}
+function createBreakout(){showToast('New breakout room created')}
+function sendInvite(type){showToast(type==='email'?'Email invite sent!':'SMS invite sent!')}
+function shareCourtLink(){navigator.clipboard?.writeText('https://videocourts.com/court/CR-2024-1087');showToast('Secure court link copied to clipboard!')}
+function toggleMic(){const icon=document.getElementById('mic-icon');icon.className=icon.className.includes('microphone-slash')?'fas fa-microphone':'fas fa-microphone-slash';showToast(icon.className.includes('slash')?'Mic muted':'Mic unmuted')}
+function toggleCam(){const icon=document.getElementById('cam-icon');icon.className=icon.className.includes('video-slash')?'fas fa-video':'fas fa-video-slash';showToast(icon.className.includes('slash')?'Camera off':'Camera on')}
+function openRules(){showToast('Courtroom rules modal would open here')}
+function closeRules(){}
+function enterCourtroom(){showToast('✅ Swear-in recorded. Entering courtroom...')}
+let recognition=null,isListening=false,speakerEnabled=false;
+function initSpeechRecognition(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return null;const r=new SR();r.continuous=false;r.interimResults=false;r.lang='en-US';r.onresult=(e)=>{document.getElementById('chat-input').value=e.results[0][0].transcript;stopMic();sendChatMessage()};r.onerror=()=>{stopMic();showToast('Microphone error')};r.onend=()=>{stopMic()};return r}
+function toggleMic(){isListening?stopMic():startMic()}
+function startMic(){if(!recognition)recognition=initSpeechRecognition();if(!recognition){showToast('Speech not supported');return}try{recognition.start();isListening=true;document.getElementById('mic-btn').classList.add('listening');showToast(' Listening... Speak to Alfai')}catch(e){}}
+function stopMic(){if(recognition&&isListening)try{recognition.stop()}catch(e){};isListening=false;document.getElementById('mic-btn').classList.remove('listening')}
+function toggleSpeaker(){speakerEnabled=!speakerEnabled;const b=document.getElementById('speaker-toggle');if(speakerEnabled){b.classList.add('active');showToast(' Voice enabled');speak('Voice output enabled. I am Alfai, your AI Legal Navigator.')}else{b.classList.remove('active');showToast('🔇 Voice disabled');window.speechSynthesis.cancel()}}
+function speak(text){if(!speakerEnabled||!window.speechSynthesis)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.rate=1;u.pitch=1;u.lang='en-US';window.speechSynthesis.speak(u)}
+function sendChatMessage(){const input=document.getElementById('chat-input');const msg=input.value.trim();if(!msg)return;const body=document.getElementById('chat-body');body.innerHTML+='<div class="chat-bubble user">'+msg+'</div>';input.value='';body.scrollTop=body.scrollHeight;setTimeout(()=>{let r="I understand. Please ensure you have completed ID.me biometric enrollment. Would you like me to guide you to the e-File module, the Virtual Hearing request, or our Pilot Programs?";if(msg.toLowerCase().includes('file'))r="Opening the Nationwide e-File module. Please ensure your documents are in PDF format. A $1.99 processing fee applies upon submission.";if(msg.toLowerCase().includes('hear'))r="You can request a virtual appearance via the flashing banner. It requires a $1.99 processing fee, and upon court approval, a $19.99 platform utility fee per case.";if(msg.toLowerCase().includes('bail'))r="Opening the Virtual Bail Network module. Please provide the inmate's full name and booking number.";if(msg.toLowerCase().includes('naacp')||msg.toLowerCase().includes('civil'))r="The Civil Rights section provides indigent fee waivers, multi-language support, and ADA compliance. Would you like me to navigate you there?";if(msg.toLowerCase().includes('arbitrat'))r="Opening the National Arbitration Portal. We support binding and non-binding arbitration under AAA, JAMS, and FINRA rules.";if(msg.toLowerCase().includes('mediat'))r="Opening the Mediation & Visitation module. Our certified mediators can help with divorce, custody, and co-parenting matters.";if(msg.toLowerCase().includes('parole')||msg.toLowerCase().includes('probation'))r="Opening the Parole & Probation module. You can schedule remote check-ins and view your compliance dashboard.";if(msg.toLowerCase().includes('pilot'))r="We have 6 active pilot programs across North Carolina, California, federal courts, Texas, immigration courts, and rural justice initiatives. Would you like me to navigate you to the Pilot Programs registration page?";if(msg.toLowerCase().includes('invest')||msg.toLowerCase().includes('sponsor'))r="VideoCourts™ offers Platinum, Gold, Silver, and Bronze sponsorship tiers starting at $25,000/year. I can navigate you to the Investment Relations page.";if(msg.toLowerCase().includes('exec')||msg.toLowerCase().includes('team'))r="Our executive team includes 8 leaders spanning legal technology, AI, security, and judicial reform. I can navigate you to the Executive Leadership page.";body.innerHTML+='<div class="chat-bubble bot">'+r+'</div>';body.scrollTop=body.scrollHeight;speak(r)},800)}
+function aiQuickAction(t){document.getElementById('chat-input').value=t;sendChatMessage()}
+function searchCase(){const v=document.getElementById('case-input').value||"CR-2024-1087";document.getElementById('case-result').innerHTML='<div class="bg-emerald-900/30 border border-emerald-500 rounded-xl p-4 mt-2"><h4 class="font-bold text-emerald-400">Case Found: '+v+'</h4><p class="text-sm text-slate-300">Status: Pending • Next Hearing: Tomorrow, 09:00 AM</p><button onclick="showView(\'view-virtual-request\')" class="btn btn-primary mt-3 text-sm py-2">Request Virtual Appearance ($1.99)</button></div>'}
+function simulateBiometric(){showToast('Requesting biometric authentication...');setTimeout(()=>{showToast('✅ Biometric verified. Identity confirmed via ID.me.');const i=document.getElementById('vault-icon');if(i)i.className='fas fa-unlock text-5xl text-emerald-400 mb-4'},1500)}
+function clearCanvas(){const c=document.getElementById('sig-canvas');c.getContext('2d').clearRect(0,0,c.width,c.height)}
+function closeCookie(){document.getElementById('cookie-toast').classList.remove('show');localStorage.setItem('vc_cookies','true')}
+if(!localStorage.getItem('vc_cookies'))setTimeout(()=>{document.getElementById('cookie-toast').classList.add('show')},1500);
+function showToast(m){const t=document.getElementById('toast');document.getElementById('toast-msg').innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+const canvas=document.getElementById('sig-canvas');
+if(canvas){const ctx=canvas.getContext('2d');let d=false;canvas.addEventListener('mousedown',(e)=>{d=true;ctx.beginPath();ctx.moveTo(e.offsetX,e.offsetY)});canvas.addEventListener('mousemove',(e)=>{if(d){ctx.lineTo(e.offsetX,e.offsetY);ctx.stroke()}});canvas.addEventListener('mouseup',()=>{d=false});canvas.addEventListener('touchstart',(e)=>{d=true;ctx.beginPath();ctx.moveTo(e.touches[0].clientX-canvas.getBoundingClientRect().left,e.touches[0].clientY-canvas.getBoundingClientRect().top);e.preventDefault()});canvas.addEventListener('touchmove',(e)=>{if(d){ctx.lineTo(e.touches[0].clientX-canvas.getBoundingClientRect().left,e.touches[0].clientY-canvas.getBoundingClientRect().top);ctx.stroke()}e.preventDefault()});canvas.addEventListener('touchend',()=>{d=false})}
+setInterval(()=>{const c='0123456789abcdef';let h='0x';for(let i=0;i<16;i++)h+=c[Math.floor(Math.random()*16)];const e=document.getElementById('vault-hash');if(e)e.innerText='Last hash: '+h+'... Updated just now'},5000);
+document.addEventListener('contextmenu',function(e){e.preventDefault();return false});
+document.addEventListener('copy',function(e){e.preventDefault();return false});
+document.addEventListener('cut',function(e){e.preventDefault();return false});
+document.addEventListener('paste',function(e){e.preventDefault();return false});
+document.addEventListener('dragstart',function(e){e.preventDefault();return false});
+document.addEventListener('selectstart',function(e){e.preventDefault();return false});
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&['c','v','x','s','u','a'].includes(e.key.toLowerCase())){e.preventDefault();return false}});
+</script>
+</body>
 </html>
