@@ -8,11 +8,11 @@
 
 ## Features
 
-- 🔐 **FacePrintPay BioAuth** — fingerprint + face ID for secure appearance verification
-- ⚖️  **AlfAi Legal Intelligence** — doc analysis, mock trial prep, attorney referral
-- 🌍 **200+ Languages** — real-time translation for global court access
-- 📱 **Mobile-First** — Android/iOS native + web
-- 🔒 **E2E Encrypted** — zero-knowledge appearance records
+-  **FacePrintPay BioAuth** — fingerprint + face ID for secure appearance verification
+-   **AlfAi Legal Intelligence** — doc analysis, mock trial prep, attorney referral
+- **200+ Languages** — real-time translation for global court access
+-  **Mobile-First** — Android/iOS native + web
+-  **E2E Encrypted** — zero-knowledge appearance records
 - 📊 **73% FTA Reduction** — verified across pilot courts
 
 ## Pricing
@@ -44,7 +44,7 @@ npm run dev
 
 ## Live Demo
 
-[videocourts-mqg7ygqd.manus.space](https://videocourts-mqg7ygqd.manus.space/)
+https://videocourts.github.io/virtual-court-system/
 
 ## Built By
 
